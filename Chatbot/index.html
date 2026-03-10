@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HealthGuard AI – AI Driven Public Health Chatbot</title>
+
+    <!-- Favicon (optional placeholder) -->
+    <link rel="icon" type="image/svg+xml" href="https://cdn.jsdelivr.net/npm/@tabler/icons@latest/icons/heartbeat.svg">
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-bs-spy="scroll" data-bs-target="#mainNavbar" data-bs-offset="80">
+
+    <!-- Emergency Banner -->
+    <section class="emergency-banner text-center py-2">
+        <div class="container d-flex flex-column flex-md-row align-items-center justify-content-center gap-2">
+            <i class="fa-solid fa-triangle-exclamation me-2"></i>
+            <p class="mb-0" data-i18n="emergency_banner">
+                If symptoms become severe, please contact a healthcare professional immediately.
+            </p>
+        </div>
+    </section>
+
+    <!-- Navbar -->
+    <nav id="mainNavbar" class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top py-3">
+        <div class="container">
+            <a class="navbar-brand fw-bold d-flex align-items-center" href="#home">
+                <span class="logo-icon d-inline-flex align-items-center justify-content-center me-2">
+                    <i class="fa-solid fa-shield-heart"></i>
+                </span>
+                <span>HealthGuard <span class="text-primary">AI</span></span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-lg-center">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#home" data-i18n="nav_home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="navChatLink" class="nav-link" href="#chatbot" data-i18n="nav_chatbot">Chatbot</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#symptom-checker" data-i18n="nav_symptom_checker">Symptom Checker</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#disease-info" data-i18n="nav_disease_info">Disease Info</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#prevention" data-i18n="nav_prevention">Prevention Tips</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#faq" data-i18n="nav_faq">FAQ</a>
+                    </li>
+                    <li class="nav-item ms-lg-3 d-flex align-items-center gap-2">
+                        <select id="siteLanguageSelect" class="form-select form-select-sm" style="max-width: 140px;" aria-label="Select language">
+                            <option value="en">English</option>
+                            <option value="hi">हिन्दी</option>
+                            <option value="mr">मराठी</option>
+                        </select>
+                        <button id="themeToggleBtn" class="btn btn-outline-secondary btn-sm rounded-circle" type="button" aria-label="Toggle theme">
+                            <i class="fa-solid fa-moon"></i>
+                        </button>
+                        <button id="navStartChatBtn" class="btn btn-primary btn-sm rounded-pill px-3" type="button" data-i18n="nav_start_chat">
+                            <i class="fa-solid fa-comments me-1"></i> Start Chatting
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section py-5">
+        <div class="container">
+            <div class="row align-items-center gy-4">
+                <div class="col-lg-6" data-sr>
+                    <h1 class="display-5 fw-bold mb-3" data-i18n="hero_title">
+                        AI Powered <span class="gradient-text">Disease Awareness</span> Assistant
+                    </h1>
+                    <p class="lead text-muted mb-4" data-i18n="hero_desc">
+                        HealthGuard AI helps you understand common diseases, symptoms, and prevention strategies
+                        using an AI-driven public health chatbot designed for awareness and education.
+                    </p>
+                    <div class="d-flex flex-wrap gap-3 mb-4">
+                        <button id="heroStartChatBtn" class="btn btn-primary btn-lg rounded-pill px-4" type="button" data-i18n="start_chatting">
+                            <i class="fa-solid fa-robot me-2"></i> Start Chatting
+                        </button>
+                        <a href="#symptom-checker" class="btn btn-outline-primary btn-lg rounded-pill px-4" data-i18n="hero_check_symptoms">
+                            <i class="fa-solid fa-stethoscope me-2"></i> Check Symptoms
+                        </a>
+                    </div>
+                    <div class="d-flex flex-wrap gap-3 small text-muted">
+                        <div class="d-flex align-items-center" data-i18n="hero_bullet_1">
+                            <i class="fa-solid fa-shield-heart text-primary me-2"></i> Public health awareness
+                        </div>
+                        <div class="d-flex align-items-center" data-i18n="hero_bullet_2">
+                            <i class="fa-solid fa-globe-asia text-success me-2"></i> Community-focused
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-sr>
+                    <div class="hero-illustration card border-0 shadow-lg">
+                        <div class="card-body p-4 p-md-5">
+                            <div class="d-flex align-items-center mb-4">
+                                <div class="avatar-circle me-3">
+                                    <i class="fa-solid fa-user-nurse"></i>
+                                </div>
+                                <div>
+                                    <h5 class="mb-0">HealthGuard AI</h5>
+                                    <small class="text-muted">Your virtual health awareness assistant</small>
+                                </div>
+                            </div>
+                            <div class="chat-preview">
+                                <div class="chat-bubble bot mb-3">
+                                    Hi there! 👋 I'm here to help you learn about common diseases, symptoms, and how to stay protected.
+                                </div>
+                                <div class="chat-bubble user mb-3 ms-auto">
+                                    What are the symptoms of dengue?
+                                </div>
+                                <div class="chat-bubble bot mb-3">
+                                    Dengue symptoms can include high fever, severe headache, pain behind the eyes, joint and muscle pain, nausea, and skin rash.
+                                </div>
+                                <div class="chat-bubble user ms-auto">
+                                    How can I prevent it?
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Chatbot Section (landing info + entry point) -->
+        <section id="chatbot" class="section-padding bg-soft">
+            <div class="container">
+                <div class="row align-items-center gy-4">
+                    <div class="col-lg-6" data-sr>
+                        <div class="section-header mb-4">
+                            <h2 class="fw-bold">AI Chatbot Assistant</h2>
+                            <p class="text-muted mb-0">
+                                Chat with HealthGuard AI for awareness about symptoms, diseases, and prevention tips.
+                                Open the full-screen assistant for a focused, ChatGPT-style experience.
+                            </p>
+                        </div>
+                        <ul class="list-unstyled small text-muted mb-4">
+                            <li class="mb-1"><i class="fa-solid fa-comments text-primary me-2"></i>Natural language Q&amp;A about common diseases</li>
+                            <li class="mb-1"><i class="fa-solid fa-brain text-success me-2"></i>AI-style responses for health awareness</li>
+                            <li class="mb-1"><i class="fa-solid fa-window-maximize text-info me-2"></i>Expandable to a full-screen chat interface</li>
+                        </ul>
+                        <div class="d-flex flex-wrap gap-3">
+                            <button id="openChatFromSectionBtn" class="btn btn-primary rounded-pill px-4">
+                                <i class="fa-solid fa-robot me-2"></i> Open Full Chat
+                            </button>
+                            <button id="openChatPreviewFromSectionBtn" class="btn btn-outline-primary rounded-pill px-4">
+                                <i class="fa-solid fa-message me-2"></i> Open Small Chat
+                            </button>
+                        </div>
+                        <small class="d-block text-muted mt-3">
+                            Educational use only. This assistant does not provide medical diagnosis or replace a doctor.
+                        </small>
+                    </div>
+                    <div class="col-lg-6" data-sr>
+                        <div class="hero-illustration card border-0 shadow-lg">
+                            <div class="card-body p-4 p-md-5">
+                                <div class="d-flex align-items-center mb-4">
+                                    <div class="avatar-circle me-3">
+                                        <i class="fa-solid fa-robot"></i>
+                                    </div>
+                                    <div>
+                                        <h5 class="mb-0">HealthGuard AI Assistant</h5>
+                                        <small class="text-muted">Tap the floating button to start chatting</small>
+                                    </div>
+                                </div>
+                                <div class="chat-preview">
+                                    <div class="chat-bubble bot mb-3">
+                                        Hello! I’m your AI-powered public health assistant. Ask me about symptoms, diseases, and prevention tips.
+                                    </div>
+                                    <div class="chat-bubble user mb-3 ms-auto">
+                                        Show me how to prevent malaria.
+                                    </div>
+                                    <div class="chat-bubble bot mb-3">
+                                        Malaria prevention focuses on avoiding mosquito bites: sleep under nets, remove stagnant water, and use repellents as advised by health authorities.
+                                    </div>
+                                    <div class="chat-bubble user ms-auto">
+                                        Okay, open the full chat!
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Symptom Checker Section -->
+        <section id="symptom-checker" class="section-padding">
+            <div class="container">
+                <div class="section-header text-center mb-5" data-sr>
+                    <h2 class="fw-bold">Smart Symptom Checker</h2>
+                    <p class="text-muted mb-0">
+                        Select your symptoms to get educational insights on possible conditions.
+                    </p>
+                </div>
+
+                <div class="row justify-content-center">
+                    <div class="col-lg-8" data-sr>
+                        <div class="card border-0 shadow-sm">
+                            <div class="card-body">
+                                <div class="mb-3">
+                                    <span class="fw-semibold">Select your symptoms:</span>
+                                </div>
+                                <div id="symptomTags" class="symptom-tags mb-4">
+                                    <button class="btn btn-outline-primary symptom-tag" data-symptom="fever">
+                                        <i class="fa-solid fa-temperature-high me-1"></i> Fever
+                                    </button>
+                                    <button class="btn btn-outline-primary symptom-tag" data-symptom="headache">
+                                        <i class="fa-solid fa-brain me-1"></i> Headache
+                                    </button>
+                                    <button class="btn btn-outline-primary symptom-tag" data-symptom="cough">
+                                        <i class="fa-solid fa-head-side-cough me-1"></i> Cough
+                                    </button>
+                                    <button class="btn btn-outline-primary symptom-tag" data-symptom="fatigue">
+                                        <i class="fa-solid fa-bed-pulse me-1"></i> Fatigue
+                                    </button>
+                                    <button class="btn btn-outline-primary symptom-tag" data-symptom="nausea">
+                                        <i class="fa-solid fa-face-tired me-1"></i> Nausea
+                                    </button>
+                                    <button class="btn btn-outline-primary symptom-tag" data-symptom="body pain">
+                                        <i class="fa-solid fa-person-running me-1"></i> Body Pain
+                                    </button>
+                                </div>
+                                <button id="analyzeSymptomsBtn" class="btn btn-primary rounded-pill">
+                                    <i class="fa-solid fa-microscope me-1"></i> Analyze Symptoms
+                                </button>
+                                <small class="d-block text-muted mt-2">
+                                    This feature provides awareness-based suggestions only and is not a diagnostic tool.
+                                </small>
+                            </div>
+                        </div>
+                        <div id="symptomResults" class="mt-4" data-sr>
+                            <!-- Possible diseases cards will appear here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Disease Info Section -->
+        <section id="disease-info" class="section-padding bg-soft">
+            <div class="container">
+                <div class="section-header text-center mb-5" data-sr>
+                    <h2 class="fw-bold">Disease Awareness</h2>
+                    <p class="text-muted mb-0">
+                        Learn about common diseases, their symptoms, causes, and prevention strategies.
+                    </p>
+                </div>
+
+                <div class="row g-4">
+                    <!-- Dengue -->
+                    <div class="col-md-6 col-lg-4" data-sr>
+                        <div class="info-card card h-100 border-0 shadow-sm">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="icon-circle bg-warning-subtle text-warning me-3">
+                                        <i class="fa-solid fa-bug"></i>
+                                    </div>
+                                    <div>
+                                        <h5 class="card-title mb-0">Dengue</h5>
+                                        <small class="text-muted">Mosquito-borne viral infection</small>
+                                    </div>
+                                </div>
+                                <p class="small mb-2"><strong>Symptoms:</strong> High fever, severe headache, pain behind the eyes, joint and muscle pain, nausea, skin rash.</p>
+                                <p class="small mb-2"><strong>Causes:</strong> Spread through the bite of infected Aedes mosquitoes.</p>
+                                <p class="small mb-0"><strong>Prevention:</strong> Avoid mosquito bites, remove stagnant water, use mosquito nets and repellents.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Malaria -->
+                    <div class="col-md-6 col-lg-4" data-sr>
+                        <div class="info-card card h-100 border-0 shadow-sm">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="icon-circle bg-success-subtle text-success me-3">
+                                        <i class="fa-solid fa-mosquito"></i>
+                                    </div>
+                                    <div>
+                                        <h5 class="card-title mb-0">Malaria</h5>
+                                        <small class="text-muted">Parasitic mosquito-borne disease</small>
+                                    </div>
+                                </div>
+                                <p class="small mb-2"><strong>Symptoms:</strong> Fever with chills, sweating, headache, nausea, vomiting, fatigue.</p>
+                                <p class="small mb-2"><strong>Causes:</strong> Caused by Plasmodium parasites transmitted through Anopheles mosquitoes.</p>
+                                <p class="small mb-0"><strong>Prevention:</strong> Use mosquito nets, repellents, indoor spraying, and follow local health guidance.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- COVID-19 -->
+                    <div class="col-md-6 col-lg-4" data-sr>
+                        <div class="info-card card h-100 border-0 shadow-sm">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="icon-circle bg-info-subtle text-info me-3">
+                                        <i class="fa-solid fa-virus-covid"></i>
+                                    </div>
+                                    <div>
+                                        <h5 class="card-title mb-0">COVID-19</h5>
+                                        <small class="text-muted">Respiratory viral infection</small>
+                                    </div>
+                                </div>
+                                <p class="small mb-2"><strong>Symptoms:</strong> Fever, dry cough, tiredness, loss of taste or smell, sore throat, difficulty breathing.</p>
+                                <p class="small mb-2"><strong>Causes:</strong> Caused by SARS-CoV-2 virus, spread via respiratory droplets and aerosols.</p>
+                                <p class="small mb-0"><strong>Prevention:</strong> Vaccination, masks in crowded places, hand hygiene, good ventilation, physical distancing.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Diabetes -->
+                    <div class="col-md-6 col-lg-4" data-sr>
+                        <div class="info-card card h-100 border-0 shadow-sm">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="icon-circle bg-primary-subtle text-primary me-3">
+                                        <i class="fa-solid fa-syringe"></i>
+                                    </div>
+                                    <div>
+                                        <h5 class="card-title mb-0">Diabetes</h5>
+                                        <small class="text-muted">Chronic metabolic disorder</small>
+                                    </div>
+                                </div>
+                                <p class="small mb-2"><strong>Symptoms:</strong> Increased thirst, frequent urination, fatigue, blurred vision, slow-healing sores.</p>
+                                <p class="small mb-2"><strong>Causes:</strong> Insufficient insulin production or ineffective insulin use; influenced by genetics and lifestyle.</p>
+                                <p class="small mb-0"><strong>Prevention:</strong> Healthy diet, regular exercise, weight management, routine health check-ups.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Influenza -->
+                    <div class="col-md-6 col-lg-4" data-sr>
+                        <div class="info-card card h-100 border-0 shadow-sm">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="icon-circle bg-danger-subtle text-danger me-3">
+                                        <i class="fa-solid fa-lungs-virus"></i>
+                                    </div>
+                                    <div>
+                                        <h5 class="card-title mb-0">Influenza (Flu)</h5>
+                                        <small class="text-muted">Seasonal viral infection</small>
+                                    </div>
+                                </div>
+                                <p class="small mb-2"><strong>Symptoms:</strong> Sudden fever, chills, cough, sore throat, muscle aches, fatigue.</p>
+                                <p class="small mb-2"><strong>Causes:</strong> Infection with influenza viruses, spread through droplets when people cough or sneeze.</p>
+                                <p class="small mb-0"><strong>Prevention:</strong> Annual flu vaccination, hand hygiene, covering coughs and sneezes, staying home when sick.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Prevention Tips Section -->
+        <section id="prevention" class="section-padding">
+            <div class="container">
+                <div class="section-header text-center mb-5" data-sr>
+                    <h2 class="fw-bold">Prevention Tips</h2>
+                    <p class="text-muted mb-0">
+                        Small daily actions can make a big difference in protecting your health and community.
+                    </p>
+                </div>
+
+                <div class="row g-4">
+                    <!-- Hand hygiene -->
+                    <div class="col-md-6 col-lg-3" data-sr>
+                        <div class="tip-card card h-100 border-0 shadow-sm">
+                            <div class="card-body">
+                                <div class="icon-circle bg-info-subtle text-info mb-3">
+                                    <i class="fa-solid fa-hands-bubbles"></i>
+                                </div>
+                                <h5 class="card-title">Hand Hygiene</h5>
+                                <p class="small text-muted mb-0">
+                                    Wash hands regularly with soap and water for at least 20 seconds, especially before eating and after contact with public surfaces.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Vaccination awareness -->
+                    <div class="col-md-6 col-lg-3" data-sr>
+                        <div class="tip-card card h-100 border-0 shadow-sm">
+                            <div class="card-body">
+                                <div class="icon-circle bg-success-subtle text-success mb-3">
+                                    <i class="fa-solid fa-syringe"></i>
+                                </div>
+                                <h5 class="card-title">Vaccination Awareness</h5>
+                                <p class="small text-muted mb-0">
+                                    Stay informed about recommended vaccines for your age and region, and follow your local health authority's guidelines.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mosquito protection -->
+                    <div class="col-md-6 col-lg-3" data-sr>
+                        <div class="tip-card card h-100 border-0 shadow-sm">
+                            <div class="card-body">
+                                <div class="icon-circle bg-warning-subtle text-warning mb-3">
+                                    <i class="fa-solid fa-mosquito"></i>
+                                </div>
+                                <h5 class="card-title">Mosquito Protection</h5>
+                                <p class="small text-muted mb-0">
+                                    Remove stagnant water around your home, use nets and repellents, and wear long-sleeved clothing in mosquito-prone areas.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Healthy lifestyle -->
+                    <div class="col-md-6 col-lg-3" data-sr>
+                        <div class="tip-card card h-100 border-0 shadow-sm">
+                            <div class="card-body">
+                                <div class="icon-circle bg-primary-subtle text-primary mb-3">
+                                    <i class="fa-solid fa-heart-pulse"></i>
+                                </div>
+                                <h5 class="card-title">Healthy Lifestyle</h5>
+                                <p class="small text-muted mb-0">
+                                    Eat a balanced diet, exercise regularly, sleep well, and manage stress to strengthen your immune system.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Location-Based Health Alert Section -->
+        <section id="health-alerts" class="section-padding bg-soft">
+            <div class="container">
+                <div class="section-header text-center mb-4" data-sr>
+                    <h2 class="fw-bold">Location-Based Health Alerts</h2>
+                    <p class="text-muted mb-0">
+                        Check placeholder health alerts for your area. This will connect to live data from the backend in the future.
+                    </p>
+                </div>
+
+                <div class="row justify-content-center">
+                    <div class="col-lg-8" data-sr>
+                        <div class="card border-0 shadow-sm">
+                            <div class="card-body d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3">
+                                <div>
+                                    <h5 class="card-title mb-2"><i class="fa-solid fa-location-dot text-primary me-2"></i>Check Health Alerts Near Me</h5>
+                                    <p class="small text-muted mb-0">
+                                        We use your approximate location to show region-specific public health awareness alerts.
+                                    </p>
+                                </div>
+                                <div class="text-md-end">
+                                    <button id="checkAlertsBtn" class="btn btn-primary rounded-pill">
+                                        <span id="alertsBtnText"><i class="fa-solid fa-location-crosshairs me-1"></i> Check Alerts Near Me</span>
+                                        <span id="alertsLoadingSpinner" class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="alertsResult" class="mt-4" data-sr>
+                            <!-- Alert cards will appear here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="section-padding">
+            <div class="container">
+                <div class="section-header text-center mb-5" data-sr>
+                    <h2 class="fw-bold">Frequently Asked Questions</h2>
+                    <p class="text-muted mb-0">
+                        Quick answers to common health awareness questions.
+                    </p>
+                </div>
+
+                <div class="row justify-content-center">
+                    <div class="col-lg-8" data-sr>
+                        <div class="accordion" id="faqAccordion">
+                            <!-- Q1 -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingOne">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        What should I do if I have fever?
+                                    </button>
+                                </h2>
+                                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        If you develop a fever, monitor your temperature, stay hydrated, rest, and avoid self-medication with antibiotics. Seek medical advice if the fever persists, becomes very high, or is accompanied by warning signs such as difficulty breathing, chest pain, severe headache, rash, or confusion.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Q2 -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingTwo">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        How does dengue spread?
+                                    </button>
+                                </h2>
+                                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        Dengue spreads through the bite of infected Aedes mosquitoes, which usually bite during the day. The virus is not spread directly from person to person. Preventing mosquito breeding and avoiding mosquito bites are key strategies to reduce dengue transmission.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Q3 -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingThree">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                        When should I consult a doctor?
+                                    </button>
+                                </h2>
+                                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        You should consult a doctor if your symptoms are severe, persistent, or worsening; if you have difficulty breathing, chest pain, confusion, or persistent high fever; or if you belong to a higher-risk group such as young children, older adults, or people with chronic health conditions.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer bg-dark text-light pt-5 pb-3">
+        <div class="container">
+            <div class="row gy-4">
+                <div class="col-md-5">
+                    <h5 class="mb-3">HealthGuard AI</h5>
+                    <p class="small text-muted mb-3">
+                        An AI-driven public health awareness chatbot for educational purposes, developed as a Java Full Stack mini project.
+                    </p>
+                    <p class="small text-muted mb-1">
+                        <i class="fa-solid fa-code me-1"></i> Frontend: HTML5, CSS3, JavaScript, Bootstrap 5
+                    </p>
+                    <p class="small text-muted mb-0">
+                        <i class="fa-solid fa-server me-1"></i> Backend (planned): Java Spring Boot REST APIs
+                    </p>
+                </div>
+                <div class="col-md-4">
+                    <h6 class="mb-3">Project Team</h6>
+                    <ul class="list-unstyled small text-muted mb-0">
+                        <li>• Team Member 1 (Developer)</li>
+                        <li>• Team Member 2 (Developer)</li>
+                        <li>• Team Member 3 (Testing & Documentation)</li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h6 class="mb-3">Disclaimer</h6>
+                    <p class="small text-muted mb-2">
+                        This chatbot provides educational health awareness information and should not replace professional medical advice, diagnosis, or treatment.
+                    </p>
+                    <p class="small text-muted mb-0">
+                        For any serious or emergency symptoms, please consult a qualified healthcare professional immediately.
+                    </p>
+                </div>
+            </div>
+            <hr class="border-secondary my-4">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-2 small text-muted">
+                <span>© <span id="currentYear"></span> HealthGuard AI. All rights reserved.</span>
+                <span>College Mini Project • Java Full Stack</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTopBtn" class="btn btn-primary btn-lg back-to-top" type="button" aria-label="Back to top">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <!-- Floating Chat Button -->
+    <button id="floatingChatBtn" class="btn btn-primary floating-chat-btn" type="button" aria-label="Open chat">
+        <i class="fa-solid fa-comments"></i>
+    </button>
+
+    <!-- Chat Preview Panel -->
+    <div id="chatPreviewPanel" class="chat-preview-panel d-none">
+        <div class="chatbot-card card border-0 shadow-lg">
+            <div class="card-header d-flex align-items-center justify-content-between">
+                <div class="d-flex align-items-center">
+                    <span class="status-dot me-2"></span>
+                    <div>
+                        <h6 class="mb-0">HealthGuard AI</h6>
+                        <small class="text-muted">Quick chat preview</small>
+                    </div>
+                </div>
+                <div class="d-flex align-items-center gap-2">
+                    <button id="expandToFullscreenBtn" class="btn btn-sm btn-outline-primary rounded-pill">
+                        <i class="fa-solid fa-up-right-and-down-left-from-center me-1"></i> Full Chat
+                    </button>
+                    <button id="closePreviewBtn" class="btn btn-sm btn-outline-secondary rounded-circle" aria-label="Close">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="card-body chatbot-body">
+                <div id="chatPreviewWindow" class="chat-window">
+                    <!-- Messages rendered from shared history -->
+                </div>
+                <div id="chatPreviewTyping" class="typing-indicator d-none">
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="quick-suggestions mb-3">
+                    <span class="me-2 small text-muted">Try:</span>
+                    <button class="btn btn-sm btn-outline-secondary suggestion-btn" data-chat-target="preview">
+                        Symptoms of dengue
+                    </button>
+                    <button class="btn btn-sm btn-outline-secondary suggestion-btn" data-chat-target="preview">
+                        How to prevent malaria
+                    </button>
+                    <button class="btn btn-sm btn-outline-secondary suggestion-btn" data-chat-target="preview">
+                        COVID symptoms
+                    </button>
+                </div>
+                <form id="chatPreviewForm" class="chat-input-row">
+                    <div class="input-group">
+                        <input type="text" id="chatPreviewInput" class="form-control" placeholder="Ask a quick question..." autocomplete="off">
+                        <button class="btn btn-primary" type="submit">
+                            <span id="sendIconPreview"><i class="fa-solid fa-paper-plane"></i></span>
+                            <span id="loadingSpinnerPreview" class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fullscreen Chat App (ChatGPT-style with sidebar history) -->
+    <div id="chatFullscreenOverlay" class="chat-fullscreen-overlay d-none" role="dialog" aria-modal="true" aria-label="HealthGuard AI chat">
+        <div class="chat-app">
+            <!-- Sidebar: conversation history -->
+            <aside class="chat-sidebar">
+                <div class="chat-sidebar-header">
+                    <div class="d-flex align-items-center justify-content-between gap-2">
+                        <div class="d-flex align-items-center">
+                            <span class="logo-icon d-inline-flex align-items-center justify-content-center me-2">
+                                <i class="fa-solid fa-shield-heart"></i>
+                            </span>
+                            <div>
+                                <div class="fw-semibold" data-i18n="chat_app_name">HealthGuard AI</div>
+                                <div class="small text-muted" data-i18n="chat_app_subtitle">Chat history</div>
+                            </div>
+                        </div>
+                        <button id="chatFsBackBtn" class="btn btn-outline-secondary btn-sm" type="button" aria-label="Back to site">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                    </div>
+                    <div class="d-flex gap-2 mt-3">
+                        <button id="newChatBtn" class="btn btn-primary btn-sm flex-grow-1" type="button" data-i18n="new_chat_btn">
+                            <i class="fa-solid fa-plus me-1"></i> New chat
+                        </button>
+                        <button id="chatFsClearBtn" class="btn btn-outline-primary btn-sm" type="button" aria-label="Clear chat">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </button>
+                    </div>
+                    <div class="d-flex align-items-center gap-2 mt-3">
+                        <label for="siteLanguageSelect" class="small text-muted mb-0" data-i18n="lang_label">Language</label>
+                        <select id="chatLangMirror" class="form-select form-select-sm ms-auto" disabled>
+                            <option>Synced</option>
+                        </select>
+                    </div>
+                </div>
+                <div id="chatHistoryList" class="chat-history-list">
+                    <!-- Conversations injected here -->
+                </div>
+            </aside>
+
+            <!-- Main chat area -->
+            <section class="chat-main">
+                <header class="chat-main-header d-flex align-items-center justify-content-between">
+                    <div>
+                        <div class="fw-semibold" data-i18n="chat_header_title">HealthGuard AI Assistant</div>
+                        <div class="small text-muted" data-i18n="chat_header_subtitle">AI-driven public health awareness</div>
+                    </div>
+                    <div class="d-flex align-items-center gap-2">
+                        <button id="chatFsMinimizeBtn" class="btn btn-outline-secondary btn-sm" type="button" title="Minimize">
+                            <i class="fa-solid fa-window-minimize"></i>
+                        </button>
+                    </div>
+                </header>
+
+                <main class="chat-main-body">
+                    <div id="chatFullscreenWindow" class="chat-window chat-fullscreen-window">
+                        <!-- Messages rendered from active conversation -->
+                    </div>
+                    <div id="chatFullscreenTyping" class="typing-indicator d-none">
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+                </main>
+
+                <footer class="chat-main-footer">
+                    <form id="chatFullscreenForm" class="chat-input-row">
+                        <div class="input-group">
+                            <button type="button" class="btn btn-outline-secondary" id="voiceInputBtn" title="Voice input">
+                                <i class="fa-solid fa-microphone"></i>
+                            </button>
+                            <input type="text" id="chatFullscreenInput" class="form-control" data-i18n-placeholder="chat_input_placeholder" placeholder="Ask about symptoms, diseases, or prevention..." autocomplete="off">
+                            <button class="btn btn-primary" type="submit">
+                                <span id="sendIconFullscreen"><i class="fa-solid fa-paper-plane"></i></span>
+                                <span id="loadingSpinnerFullscreen" class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                            </button>
+                        </div>
+                        <small class="text-muted d-block mt-1" data-i18n="chat_disclaimer">
+                            This assistant provides educational health awareness and should not replace professional medical advice.
+                        </small>
+                    </form>
+                </footer>
+            </section>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    <!-- Custom JS -->
+    <script src="assets/js/app.js"></script>
+</body>
+</html>
+
