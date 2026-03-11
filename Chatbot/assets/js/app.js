@@ -662,17 +662,21 @@ function initChatApp() {
         renderAll();
     }
 
-    function handleSubmit(text) {
+    async function handleSubmit(text) {
         if (!text) return;
         pushMessage("user", text);
         setLoading(true);
 
-        const delay = 900 + Math.random() * 900;
-        setTimeout(() => {
-            const reply = getMockChatbotReply(text, chatConfig.language);
-            setLoading(false);
+        // query the AI (or fallback to mock if no key/connection)
+        try {
+            const reply = await getChatbotReply(text, chatConfig.language);
             pushMessage("bot", reply);
-        }, delay);
+        } catch (err) {
+            console.error("Error getting chatbot reply", err);
+            pushMessage("bot", "I'm having trouble reaching the AI service right now. Please try again later.");
+        } finally {
+            setLoading(false);
+        }
     }
 
     // Events
@@ -784,6 +788,71 @@ function cryptoRandomId() {
 function formatDateShort(iso) {
     const d = new Date(iso);
     return d.toLocaleDateString([], { month: "short", day: "2-digit" });
+}
+
+// ---------------------------------------------------
+// rule-based healthcare knowledge (no external APIs)
+// ---------------------------------------------------
+
+// track last mentioned disease for follow-up
+let lastDisease = null;
+
+// dataset of common diseases
+const healthData = {
+    dengue: {
+        symptoms: "High fever, severe headache, pain behind the eyes, joint and muscle pain, nausea, and skin rash.",
+        precautions: "Use mosquito repellents, wear full-sleeve clothing, remove stagnant water around the house, and use mosquito nets.",
+        awareness: "Dengue is a mosquito-borne viral infection spread by Aedes mosquitoes. Early detection and prevention of mosquito breeding are important.",
+        causes: "It is caused by the dengue virus transmitted through mosquito bites.",
+        treatment: "There is no specific cure, but proper hydration, rest, and medical supervision help manage symptoms."
+    },
+    malaria: {
+        symptoms: "High fever, chills, sweating, headache, nausea, and fatigue.",
+        precautions: "Use mosquito nets, mosquito repellents, and avoid stagnant water areas.",
+        awareness: "Malaria is transmitted by infected Anopheles mosquitoes and is common in tropical regions.",
+        causes: "It is caused by Plasmodium parasites transmitted through mosquito bites.",
+        treatment: "Antimalarial medications prescribed by doctors are used for treatment."
+    },
+    diabetes: {
+        symptoms: "Frequent urination, excessive thirst, fatigue, blurred vision, and slow healing wounds.",
+        precautions: "Maintain a balanced diet, exercise regularly, monitor blood sugar levels, and avoid excessive sugar.",
+        awareness: "Diabetes is a chronic condition that affects how the body processes blood sugar.",
+        causes: "It occurs when the body cannot produce enough insulin or cannot use insulin effectively.",
+        treatment: "Treatment includes lifestyle changes, medications, and insulin therapy if required."
+    }
+};
+
+function capitalize(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+async function getChatbotReply(userText, lang) {
+    const text = userText.toLowerCase();
+    for (const disease of Object.keys(healthData)) {
+        if (text.includes(disease)) {
+            lastDisease = disease;
+            const info = healthData[disease];
+            return `${capitalize(disease)} Information:\n\n` +
+                `Symptoms: ${info.symptoms}\n` +
+                `Precautions: ${info.precautions}\n` +
+                `Causes: ${info.causes}\n` +
+                `Treatment: ${info.treatment}\n` +
+                `Awareness: ${info.awareness}`;
+        }
+    }
+    if (lastDisease) {
+        const info = healthData[lastDisease];
+        if (/symptoms?/.test(text)) return info.symptoms;
+        if (/precautions?/.test(text)) return info.precautions;
+        if (/causes?/.test(text)) return info.causes;
+        if (/treatment/.test(text)) return info.treatment;
+        if (/spread|how.*spread/.test(text)) return info.awareness;
+    }
+    return "I am a healthcare awareness chatbot. You can ask about diseases such as dengue, malaria, diabetes, fever, hypertension, etc.";
+}
+
+function getMockChatbotReply(userText, lang) {
+    return getChatbotReply(userText, lang);
 }
 
 function initChatbot() {
@@ -938,17 +1007,10 @@ function initChatbot() {
         setTimeout(async () => {
             let reply;
             try {
-                reply = getMockChatbotReply(text, chatConfig.language);
-                // Example backend call (for Spring Boot):
-                // const response = await fetch(CHATBOT_API, {
-                //     method: "POST",
-                //     headers: { "Content-Type": "application/json" },
-                //     body: JSON.stringify({ message: text })
-                // });
-                // const data = await response.json();
-                // reply = data.reply;
+                reply = await getChatbotReply(text, chatConfig.language);
             } catch (err) {
-                reply = "I'm having trouble reaching the server right now. Please try again later or contact your healthcare provider if it's urgent.";
+                console.error("Error fetching reply", err);
+                reply = "I'm having trouble reaching the AI service right now. Please try again later or contact your healthcare provider if it's urgent.";
             } finally {
                 setLoadingUI(source, false);
                 pushMessage("bot", reply);
@@ -1094,98 +1156,6 @@ function initChatbot() {
             }
         });
     }
-
-
-// ---------------------------------------------------
-// ChatGPT / API integration
-// ---------------------------------------------------
-// place your OpenAI API key here or save to localStorage under "healthguard_openai_key"
-const OPENAI_API_KEY = "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";
-
-async function getChatbotReply(userText, lang) {
-    const key = OPENAI_API_KEY || window.localStorage.getItem("healthguard_openai_key");
-    if (key) {
-        try {
-            const payload = {
-                model: "gpt-3.5-turbo",
-                messages: [
-                    { role: "system", content: `You are a helpful public health awareness assistant. Answer questions in ${lang === "hi" ? "Hindi" : lang === "mr" ? "Marathi" : "English"}.` },
-                    { role: "user", content: userText }
-                ],
-                max_tokens: 500,
-                temperature: 0.7
-            };
-            const res = await fetch("https://api.openai.com/v1/chat/completions", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": `Bearer ${key}`
-                },
-                body: JSON.stringify(payload)
-            });
-            const data = await res.json();
-            if (data.choices && data.choices[0] && data.choices[0].message) {
-                return data.choices[0].message.content.trim();
-            }
-            console.error("Unexpected OpenAI response", data);
-            return "Sorry, I couldn't generate a response from the AI service.";
-        } catch (err) {
-            console.error("ChatGPT request failed", err);
-            return "Error contacting AI service.";
-        }
-    }
-    // fallback to built-in mock replies
-    return getMockChatbotReply(userText, lang);
-}
-
-function getMockChatbotReply(userText, lang) {
-    const text = userText.toLowerCase();
-
-    let base;
-
-    if (text.includes("dengue")) {
-        base = {
-            en: "Dengue often presents with high fever, severe headache, pain behind the eyes, joint and muscle pain, nausea, vomiting, and skin rash.\n\nPrevention focuses on avoiding mosquito bites: remove stagnant water, use mosquito repellents, sleep under nets, and wear long sleeves in mosquito-prone areas.",
-            hi: "डेंगू में आमतौर पर तेज बुखार, तेज सिरदर्द, आंखों के पीछे दर्द, जोड़ों और मांसपेशियों में दर्द, मितली, उलटी और त्वचा पर दाने हो सकते हैं।\n\nबचाव के लिए मच्छर के काटने से बचना ज़रूरी है – जमा पानी हटाएँ, मच्छरदानी और रिपेलेंट का उपयोग करें और पूरी बाजू के कपड़े पहनें।",
-            mr: "डेंगूमध्ये साधारणपणे जास्त ताप, तीव्र डोकेदुखी, डोळ्यांच्या मागे वेदना, सांधे आणि स्नायूंमध्ये दुखणे, मळमळ, उलटी आणि अंगावर पुरळ अशी लक्षणे दिसू शकतात.\n\nप्रतिबंधासाठी डास चावू नयेत याकडे लक्ष द्या – साचलेले पाणी काढून टाका, मच्छरदाणी आणि रिपेलेंट वापरा आणि पूर्ण बाह्यांचे कपडे घाला."
-        };
-    } else if (text.includes("malaria")) {
-        base = {
-            en: "Malaria typically causes fever with chills, sweating, headache, nausea, vomiting, and fatigue.\n\nUse mosquito nets, repellents and follow local health advice. High fever after travel to a malaria-prone area should be evaluated by a doctor.",
-            hi: "मलेरिया में अक्सर ठंड के साथ तेज बुखार, पसीना, सिरदर्द, मितली, उलटी और थकान होती है।\n\nमच्छरदानी और रिपेलेंट का उपयोग करें और स्थानीय स्वास्थ्य विभाग की सलाह मानें। यदि मलेरिया-प्रभावित क्षेत्र से आने के बाद तेज बुखार हो तो तुरंत डॉक्टर से मिलें।",
-            mr: "मलेरियामध्ये साधारणपणे थंडी वाजून ताप येणे, घाम येणे, डोकेदुखी, मळमळ, उलटी आणि थकवा अशी लक्षणे दिसतात.\n\nमच्छरदाणी, रिपेलेंट वापरा आणि स्थानिक आरोग्य विभागाच्या सूचनांचे पालन करा. मलेरियाग्रस्त भागातून आल्यावर जास्त ताप आल्यास तात्काळ डॉक्टरांचा सल्ला घ्या."
-        };
-    } else if (text.includes("covid") || text.includes("corona")) {
-        base = {
-            en: "Common COVID‑19 symptoms include fever, dry cough, tiredness, sore throat, loss of taste or smell, and sometimes difficulty breathing.\n\nVaccination, masks in crowded places, hand hygiene, and good ventilation are important for protection.",
-            hi: "कोविड‑19 के सामान्य लक्षणों में बुखार, सूखी खाँसी, थकान, गले में खराश, सूँघने या स्वाद की क्षमता कम होना और कभी‑कभी सांस लेने में तकलीफ शामिल हैं।\n\nसुरक्षा के लिए टीकाकरण, भीड़भाड़ में मास्क, हाथों की सफाई और अच्छी वेंटिलेशन बहुत ज़रूरी हैं।",
-            mr: "कोविड‑19ची सामान्य लक्षणे म्हणजे ताप, कोरडी खोकला, थकवा, घशात खवखव, वास किंवा चव न येणे आणि कधी‑कधी श्वास घेण्यास त्रास.\n\nसंरक्षणासाठी लसीकरण, गर्दीत मास्कचा वापर, हात स्वच्छ ठेवणे आणि चांगली हवा खेळती ठेवणे महत्त्वाचे आहे."
-        };
-    } else if (text.includes("fever")) {
-        base = {
-            en: "For most mild fevers, rest, drinking fluids, and monitoring your temperature are important. Very high or persistent fever, or fever with warning signs like breathing difficulty, rash, confusion, or severe pain needs medical attention.",
-            hi: "हल्के बुखार में आमतौर पर आराम करना, पर्याप्त पानी पीना और तापमान की निगरानी करना ज़रूरी होता है। अगर बुखार बहुत तेज हो, कई दिनों तक बना रहे या सांस फूलना, दाने, उलझन या तेज दर्द जैसे लक्षण हों तो डॉक्टर से तुरंत सलाह लेनी चाहिए।",
-            mr: "हलका ताप आल्यास विश्रांती घेणे, पुरेसे पाणी पिणे आणि ताप नियमित तपासणे महत्त्वाचे आहे. फार जास्त ताप, अनेक दिवस टिकणारा ताप किंवा श्वास घेण्यास त्रास, पुरळ, गोंधळ, तीव्र वेदना असे लक्षणे असल्यास डॉक्टरांचा सल्ला आवश्यक आहे."
-        };
-    } else if (text.includes("prevent")) {
-        base = {
-            en: "Prevention depends on the disease, but general tips are: wash hands regularly, keep vaccinations up to date, use mosquito protection in risk areas, eat a balanced diet, exercise, sleep well, and avoid tobacco and excess alcohol.",
-            hi: "बचाव बीमारी पर निर्भर करता है, लेकिन कुछ सामान्य उपाय हैं: हाथों की नियमित सफाई, समय पर टीकाकरण, जोखिम वाले क्षेत्रों में मच्छरों से बचाव, संतुलित आहार, नियमित व्यायाम, अच्छी नींद और तंबाकू व अत्यधिक शराब से बचना।",
-            mr: "प्रतिबंध आजारानुसार बदलतो, पण काही सामान्य उपाय असे आहेत: हात नियमित स्वच्छ धुणे, वेळेवर लसीकरण, जोखमीच्या भागात डासांपासून संरक्षण, संतुलित आहार, नियमित व्यायाम, पुरेशी झोप आणि तंबाखू व जास्त मद्यपान टाळणे."
-        };
-    } else {
-        base = {
-            en: "I can help you learn about common diseases, symptoms, and prevention steps.\n\nYou can ask questions like:\n• \"Symptoms of dengue\"\n• \"How to prevent malaria\"\n• \"COVID symptoms\"\n• \"Prevention tips for diabetes\"",
-            hi: "मैं आपको आम बीमारियों, उनके लक्षणों और बचाव के तरीकों के बारे में जागरूक करने में मदद कर सकता हूँ।\n\nआप ऐसे सवाल पूछ सकते हैं:\n• \"डेंगू के लक्षण क्या हैं?\"\n• \"मलेरिया से कैसे बचें?\"\n• \"कोविड के लक्षण\"\n• \"डायबिटीज की रोकथाम के उपाय\"",
-            mr: "मी तुम्हाला सामान्य आजार, त्यांची लक्षणे आणि प्रतिबंधक उपाय याबद्दल माहिती देऊ शकतो.\n\nतुम्ही असे प्रश्न विचारू शकता:\n• \"डेंगूची लक्षणे कोणती?\"\n• \"मलेरियापासून कशी बचाव करावी?\"\n• \"कोविडची लक्षणे\"\n• \"डायबेटीस टाळण्यासाठी काय करावे?\""
-        };
-    }
-
-    if (lang === "hi" || lang === "mr") {
-        return base[lang] + "\n\n⚠️ यह केवल जागरूकता के लिए है / ही माहिती केवळ जागरूकतेसाठी आहे. गंभीर लक्षणे असल्यास कृपया डॉक्टरांचा सल्ला घ्या.";
-    }
-    return base.en + "\n\n⚠️ This is for health awareness only and does not replace a doctor.";
-}
 
 /* ============== Symptom Checker ============== */
 
