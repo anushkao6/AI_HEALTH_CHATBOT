@@ -99,7 +99,90 @@ function initI18n() {
             chat_header_title: "HealthGuard AI Assistant",
             chat_header_subtitle: "AI-driven public health awareness",
             chat_input_placeholder: "Ask about symptoms, diseases, or prevention...",
-            chat_disclaimer: "This assistant provides educational health awareness and should not replace professional medical advice."
+            chat_disclaimer: "This assistant provides educational health awareness and should not replace professional medical advice.",
+            // Disease labels
+            symptoms_label: "Symptoms:",
+            causes_label: "Causes:",
+            prevention_label: "Prevention:",
+            // Symptom Checker
+            symptom_checker_title: "Smart Symptom Checker",
+            symptom_checker_desc: "Select your symptoms to get educational insights on possible conditions.",
+            select_symptoms: "Select your symptoms:",
+            fever: "Fever",
+            headache: "Headache",
+            cough: "Cough",
+            fatigue: "Fatigue",
+            nausea: "Nausea",
+            body_pain: "Body Pain",
+            analyze_symptoms: "Analyze Symptoms",
+            symptom_disclaimer: "This feature provides awareness-based suggestions only and is not a diagnostic tool.",
+            // Disease Info
+            disease_info_title: "Disease Awareness",
+            disease_info_desc: "Learn about common diseases, their symptoms, causes, and prevention strategies.",
+            dengue_title: "Dengue",
+            dengue_subtitle: "Mosquito-borne viral infection",
+            dengue_symptoms: "High fever, severe headache, pain behind the eyes, joint and muscle pain, nausea, skin rash.",
+            dengue_causes: "Spread through the bite of infected Aedes mosquitoes.",
+            dengue_prevention: "Avoid mosquito bites, remove stagnant water, use mosquito nets and repellents.",
+            malaria_title: "Malaria",
+            malaria_subtitle: "Parasitic mosquito-borne disease",
+            malaria_symptoms: "Fever with chills, sweating, headache, nausea, vomiting, fatigue.",
+            malaria_causes: "Caused by Plasmodium parasites transmitted through Anopheles mosquitoes.",
+            malaria_prevention: "Use mosquito nets, repellents, indoor spraying, and follow local health guidance.",
+            covid_title: "COVID-19",
+            covid_subtitle: "Respiratory viral infection",
+            covid_symptoms: "Fever, dry cough, tiredness, loss of taste or smell, sore throat, difficulty breathing.",
+            covid_causes: "Caused by SARS-CoV-2 virus, spread via respiratory droplets and aerosols.",
+            covid_prevention: "Vaccination, masks in crowded places, hand hygiene, good ventilation, physical distancing.",
+            diabetes_title: "Diabetes",
+            diabetes_subtitle: "Chronic metabolic disorder",
+            diabetes_symptoms: "Increased thirst, frequent urination, fatigue, blurred vision, slow-healing sores.",
+            diabetes_causes: "Insufficient insulin production or ineffective insulin use; influenced by genetics and lifestyle.",
+            diabetes_prevention: "Healthy diet, regular exercise, weight management, routine health check-ups.",
+            influenza_title: "Influenza (Flu)",
+            influenza_subtitle: "Seasonal viral infection",
+            influenza_symptoms: "Sudden fever, chills, cough, sore throat, muscle aches, fatigue.",
+            influenza_causes: "Infection with influenza viruses, spread through droplets when people cough or sneeze.",
+            influenza_prevention: "Annual flu vaccination, hand hygiene, covering coughs and sneezes, staying home when sick.",
+            // Prevention Tips
+            prevention_title: "Prevention Tips",
+            prevention_desc: "Small daily actions can make a big difference in protecting your health and community.",
+            hand_hygiene_title: "Hand Hygiene",
+            hand_hygiene_desc: "Wash hands regularly with soap and water for at least 20 seconds, especially before eating and after contact with public surfaces.",
+            vaccination_title: "Vaccination Awareness",
+            vaccination_desc: "Stay informed about recommended vaccines for your age and region, and follow your local health authority's guidelines.",
+            mosquito_title: "Mosquito Protection",
+            mosquito_desc: "Remove stagnant water around your home, use nets and repellents, and wear long-sleeved clothing in mosquito-prone areas.",
+            lifestyle_title: "Healthy Lifestyle",
+            lifestyle_desc: "Eat a balanced diet, exercise regularly, sleep well, and manage stress to strengthen your immune system.",
+            // Health Alerts
+            alerts_title: "Location-Based Health Alerts",
+            alerts_desc: "Check placeholder health alerts for your area. This will connect to live data from the backend in the future.",
+            alerts_check_title: "Check Health Alerts Near Me",
+            alerts_check_desc: "We use your approximate location to show region-specific public health awareness alerts.",
+            check_alerts_btn: "Check Alerts Near Me",
+            // FAQ
+            faq_title: "Frequently Asked Questions",
+            faq_desc: "Quick answers to common health awareness questions.",
+            faq_q1: "What should I do if I have fever?",
+            faq_a1: "If you develop a fever, monitor your temperature, stay hydrated, rest, and avoid self-medication with antibiotics. Seek medical advice if the fever persists, becomes very high, or is accompanied by warning signs such as difficulty breathing, chest pain, severe headache, rash, or confusion.",
+            faq_q2: "How does dengue spread?",
+            faq_a2: "Dengue spreads through the bite of infected Aedes mosquitoes, which usually bite during the day. The virus is not spread directly from person to person. Preventing mosquito breeding and avoiding mosquito bites are key strategies to reduce dengue transmission.",
+            faq_q3: "When should I consult a doctor?",
+            faq_a3: "You should consult a doctor if your symptoms are severe, persistent, or worsening; if you have difficulty breathing, chest pain, confusion, or persistent high fever; or if you belong to a higher-risk group such as young children, older adults, or people with chronic health conditions.",
+            // Footer
+            footer_about: "An AI-driven public health awareness chatbot for educational purposes, developed as a Java Full Stack mini project.",
+            footer_frontend: "Frontend: HTML5, CSS3, JavaScript, Bootstrap 5",
+            footer_backend: "Backend (planned): Java Spring Boot REST APIs",
+            footer_team_title: "Project Team",
+            footer_team_member1: "Team Member 1 (Developer)",
+            footer_team_member2: "Team Member 2 (Developer)",
+            footer_team_member3: "Team Member 3 (Testing & Documentation)",
+            footer_disclaimer_title: "Disclaimer",
+            footer_disclaimer1: "This chatbot provides educational health awareness information and should not replace professional medical advice, diagnosis, or treatment.",
+            footer_disclaimer2: "For any serious or emergency symptoms, please consult a qualified healthcare professional immediately.",
+            footer_copyright: "© [YEAR] HealthGuard AI. All rights reserved.",
+            footer_project: "College Mini Project • Java Full Stack"
         },
         hi: {
             emergency_banner: "यदि लक्षण गंभीर हो जाएँ, तो कृपया तुरंत किसी स्वास्थ्य विशेषज्ञ से संपर्क करें।",
@@ -108,7 +191,7 @@ function initI18n() {
             nav_symptom_checker: "लक्षण जांच",
             nav_disease_info: "रोग जानकारी",
             nav_prevention: "रोकथाम टिप्स",
-            nav_faq: "FAQ",
+            nav_faq: "सामान्य प्रश्न",
             nav_start_chat: '<i class="fa-solid fa-comments me-1"></i> चैट शुरू करें',
             hero_check_symptoms: '<i class="fa-solid fa-stethoscope me-2"></i> लक्षण देखें',
             hero_bullet_1: '<i class="fa-solid fa-shield-heart text-primary me-2"></i> सार्वजनिक स्वास्थ्य जागरूकता',
@@ -123,7 +206,90 @@ function initI18n() {
             chat_header_title: "HealthGuard AI सहायक",
             chat_header_subtitle: "AI‑चालित सार्वजनिक स्वास्थ्य जागरूकता",
             chat_input_placeholder: "लक्षण, बीमारी या बचाव के बारे में पूछें...",
-            chat_disclaimer: "यह सहायक केवल स्वास्थ्य जागरूकता के लिए है और डॉक्टर की सलाह का विकल्प नहीं है।"
+            chat_disclaimer: "यह सहायक केवल स्वास्थ्य जागरूकता के लिए है और डॉक्टर की सलाह का विकल्प नहीं है।",
+            // Disease labels
+            symptoms_label: "लक्षण:",
+            causes_label: "कारण:",
+            prevention_label: "रोकथाम:",
+            // Symptom Checker
+            symptom_checker_title: "स्मार्ट लक्षण जांचक",
+            symptom_checker_desc: "संभावित स्थितियों पर शैक्षिक अंतर्दृष्टि प्राप्त करने के लिए अपने लक्षण चुनें।",
+            select_symptoms: "अपने लक्षण चुनें:",
+            fever: "बुखार",
+            headache: "सिरदर्द",
+            cough: "खांसी",
+            fatigue: "थकान",
+            nausea: "जी मिचलाना",
+            body_pain: "शरीर दर्द",
+            analyze_symptoms: "लक्षण विश्लेषण करें",
+            symptom_disclaimer: "यह सुविधा केवल जागरूकता-आधारित सुझाव प्रदान करती है और एक नैदानिक उपकरण नहीं है।",
+            // Disease Info
+            disease_info_title: "रोग जागरूकता",
+            disease_info_desc: "सामान्य बीमारियों, उनके लक्षणों, कारणों और रोकथाम रणनीतियों के बारे में जानें।",
+            dengue_title: "डेंगू",
+            dengue_subtitle: "मच्छर-जनित वायरल संक्रमण",
+            dengue_symptoms: "उच्च बुखार, गंभीर सिरदर्द, आंखों के पीछे दर्द, जोड़ और मांसपेशियों का दर्द, जी मिचलाना, त्वचा पर दाने।",
+            dengue_causes: "संक्रमित एडीज मच्छर के काटने से फैलता है।",
+            dengue_prevention: "मच्छर के काटने से बचें, खड़ा पानी हटाएं, मच्छरदानी और रेपेलेंट का उपयोग करें।",
+            malaria_title: "मलेरिया",
+            malaria_subtitle: "परजीवी मच्छर-जनित रोग",
+            malaria_symptoms: "ठंड के साथ बुखार, पसीना, सिरदर्द, जी मिचलाना, उल्टी, थकान।",
+            malaria_causes: "प्लाज्मोडियम परजीवियों द्वारा एंफेलीज मच्छरों के माध्यम से फैलता है।",
+            malaria_prevention: "मच्छरदानी, रेपेलेंट, घर के अंदर स्प्रे का उपयोग करें, और स्थानीय स्वास्थ्य मार्गदर्शन का पालन करें।",
+            covid_title: "कोविड-19",
+            covid_subtitle: "श्वसन वायरल संक्रमण",
+            covid_symptoms: "बुखार, सूखी खांसी, थकान, स्वाद या गंध की हानि, गले में खराश, सांस लेने में कठिनाई।",
+            covid_causes: "SARS-CoV-2 वायरस द्वारा, श्वसन बूंदों और एरोसोल के माध्यम से फैलता है।",
+            covid_prevention: "टीकाकरण, भीड़भाड़ वाली जगहों पर मास्क, हाथ स्वच्छता, अच्छी वेंटिलेशन, शारीरिक दूरी।",
+            diabetes_title: "मधुमेह",
+            diabetes_subtitle: "जीर्ण चयापचय विकार",
+            diabetes_causes: "अपर्याप्त इंसुलिन उत्पादन या अप्रभावी इंसुलिन उपयोग; आनुवंशिकी और जीवनशैली से प्रभावित।",
+            diabetes_prevention: "स्वस्थ आहार, नियमित व्यायाम, वजन प्रबंधन, नियमित स्वास्थ्य जांच।",
+            diabetes_symptoms: "प्यास में वृद्धि, बार-बार पेशाब, थकान, धुंधली दृष्टि, धीरे-धीरे ठीक होने वाले घाव।",
+            influenza_title: "इन्फ्लुएंजा (फ्लू)",
+            influenza_subtitle: "मौसमी वायरल संक्रमण",
+            influenza_symptoms: "अचानक बुखार, ठंड, खांसी, गले में खराश, मांसपेशियों में दर्द, थकान।",
+            influenza_causes: "इन्फ्लुएंजा वायरस से संक्रमण, जब लोग खांसते या छींकते हैं तो बूंदों के माध्यम से फैलता है।",
+            influenza_prevention: "वार्षिक फ्लू टीकाकरण, हाथ स्वच्छता, खांसी और छींक को ढकना, बीमार होने पर घर पर रहना।",
+            // Prevention Tips
+            prevention_title: "रोकथाम टिप्स",
+            prevention_desc: "छोटी दैनिक क्रियाएं आपके स्वास्थ्य और समुदाय की रक्षा में बड़ा अंतर ला सकती हैं।",
+            hand_hygiene_title: "हाथ स्वच्छता",
+            hand_hygiene_desc: "खाना खाने से पहले और सार्वजनिक सतहों से संपर्क करने के बाद विशेष रूप से साबुन और पानी से कम से कम 20 सेकंड तक हाथ धोएं।",
+            vaccination_title: "टीकाकरण जागरूकता",
+            vaccination_desc: "अपनी उम्र और क्षेत्र के लिए अनुशंसित टीकों के बारे में सूचित रहें, और अपने स्थानीय स्वास्थ्य अधिकारी के मार्गदर्शिकाओं का पालन करें।",
+            mosquito_title: "मच्छर सुरक्षा",
+            mosquito_desc: "अपने घर के आसपास खड़ा पानी हटाएं, जाली और रेपेलेंट का उपयोग करें, और मच्छर वाले क्षेत्रों में लंबी बाजू वाली कपड़े पहनें।",
+            lifestyle_title: "स्वस्थ जीवनशैली",
+            lifestyle_desc: "संतुलित आहार खाएं, नियमित व्यायाम करें, अच्छी नींद लें, और अपनी प्रतिरक्षा प्रणाली को मजबूत करने के लिए तनाव प्रबंधित करें।",
+            // Health Alerts
+            alerts_title: "स्थान-आधारित स्वास्थ्य अलर्ट",
+            alerts_desc: "अपने क्षेत्र के लिए प्लेसहोल्डर स्वास्थ्य अलर्ट जांचें। भविष्य में यह बैकएंड से लाइव डेटा से कनेक्ट होगा।",
+            alerts_check_title: "मेरे पास स्वास्थ्य अलर्ट जांचें",
+            alerts_check_desc: "हम क्षेत्र-विशिष्ट सार्वजनिक स्वास्थ्य जागरूकता अलर्ट दिखाने के लिए आपके अनुमानित स्थान का उपयोग करते हैं।",
+            check_alerts_btn: "मेरे पास अलर्ट जांचें",
+            // FAQ
+            faq_title: "सामान्य प्रश्न",
+            faq_desc: "सामान्य स्वास्थ्य जागरूकता प्रश्नों के त्वरित उत्तर।",
+            faq_q1: "यदि मुझे बुखार है तो मुझे क्या करना चाहिए?",
+            faq_a1: "यदि आपको बुखार आता है, तो अपना तापमान मॉनिटर करें, हाइड्रेटेड रहें, आराम करें, और एंटीबायोटिक्स के साथ स्व-दवा से बचें। यदि बुखार बना रहता है, बहुत अधिक हो जाता है, या सांस लेने में कठिनाई, छाती में दर्द, गंभीर सिरदर्द, दाने, या भ्रम जैसे चेतावनी संकेतों के साथ होता है तो चिकित्सा सलाह लें।",
+            faq_q2: "डेंगू कैसे फैलता है?",
+            faq_a2: "डेंगू संक्रमित एडीज मच्छर के काटने से फैलता है, जो आमतौर पर दिन के दौरान काटते हैं। वायरस व्यक्ति से व्यक्ति सीधे नहीं फैलता। मच्छर पैदा करने को रोकना और मच्छर के काटने से बचना डेंगू प्रसार को कम करने की प्रमुख रणनीतियां हैं।",
+            faq_q3: "मुझे कब डॉक्टर से सलाह लेनी चाहिए?",
+            faq_a3: "यदि आपके लक्षण गंभीर, लगातार या बिगड़ रहे हैं; यदि आपको सांस लेने में कठिनाई, छाती में दर्द, भ्रम, या लगातार उच्च बुखार है; या यदि आप उच्च जोखिम वाले समूह से संबंधित हैं जैसे छोटे बच्चे, बुजुर्ग, या पुरानी स्वास्थ्य स्थितियों वाले लोग तो आपको डॉक्टर से सलाह लेनी चाहिए।",
+            // Footer
+            footer_about: "शैक्षिक उद्देश्यों के लिए एक AI-चालित सार्वजनिक स्वास्थ्य जागरूकता चैटबॉट, जिसे जावा फुल स्टैक मिनी प्रोजेक्ट के रूप में विकसित किया गया है।",
+            footer_frontend: "फ्रंटएंड: HTML5, CSS3, JavaScript, Bootstrap 5",
+            footer_backend: "बैकएंड (योजनाबद्ध): Java Spring Boot REST APIs",
+            footer_team_title: "प्रोजेक्ट टीम",
+            footer_team_member1: "टीम सदस्य 1 (डेवलपर)",
+            footer_team_member2: "टीम सदस्य 2 (डेवलपर)",
+            footer_team_member3: "टीम सदस्य 3 (टेस्टिंग और दस्तावेजीकरण)",
+            footer_disclaimer_title: "अस्वीकरण",
+            footer_disclaimer1: "यह चैटबॉट शैक्षिक स्वास्थ्य जागरूकता जानकारी प्रदान करता है और पेशेवर चिकित्सा सलाह, निदान या उपचार का विकल्प नहीं होना चाहिए।",
+            footer_disclaimer2: "किसी भी गंभीर या आपातकालीन लक्षणों के लिए, कृपया तुरंत एक योग्य स्वास्थ्य पेशेवर से सलाह लें।",
+            footer_copyright: "© [YEAR] HealthGuard AI. सर्वाधिकार सुरक्षित।",
+            footer_project: "कॉलेज मिनी प्रोजेक्ट • जावा फुल स्टैक"
         },
         mr: {
             emergency_banner: "लक्षण गंभीर झाल्यास कृपया त्वरितपणे आरोग्यतज्ज्ञांचा सल्ला घ्या.",
@@ -132,7 +298,7 @@ function initI18n() {
             nav_symptom_checker: "लक्षण तपासणी",
             nav_disease_info: "रोग माहिती",
             nav_prevention: "प्रतिबंध टिप्स",
-            nav_faq: "FAQ",
+            nav_faq: "सामान्य प्रश्न",
             nav_start_chat: '<i class="fa-solid fa-comments me-1"></i> चॅट सुरू करा',
             hero_check_symptoms: '<i class="fa-solid fa-stethoscope me-2"></i> लक्षणे तपासा',
             hero_bullet_1: '<i class="fa-solid fa-shield-heart text-primary me-2"></i> सार्वजनिक आरोग्य जागरूकता',
@@ -147,7 +313,90 @@ function initI18n() {
             chat_header_title: "HealthGuard AI सहाय्यक",
             chat_header_subtitle: "AI‑चालित सार्वजनिक आरोग्य जागरूकता",
             chat_input_placeholder: "लक्षणे, आजार किंवा प्रतिबंध याबद्दल विचारा...",
-            chat_disclaimer: "ही माहिती केवळ आरोग्य जागरूकतेसाठी आहे आणि डॉक्टरांच्या सल्ल्याचा पर्याय नाही."
+            chat_disclaimer: "ही माहिती केवळ आरोग्य जागरूकतेसाठी आहे आणि डॉक्टरांच्या सल्ल्याचा पर्याय नाही.",
+            // Disease labels
+            symptoms_label: "लक्षणे:",
+            causes_label: "कारणे:",
+            prevention_label: "प्रतिबंध:",
+            // Symptom Checker
+            symptom_checker_title: "स्मार्ट लक्षण तपासणी",
+            symptom_checker_desc: "संभाव्य स्थितींवर शैक्षणिक अंतर्दृष्टी मिळविण्यासाठी तुमची लक्षणे निवडा.",
+            select_symptoms: "तुमची लक्षणे निवडा:",
+            fever: "ताप",
+            headache: "डोकेदुखी",
+            cough: "खोकला",
+            fatigue: "थकवा",
+            nausea: "मळमळ",
+            body_pain: "शरीर दुखी",
+            analyze_symptoms: "लक्षणे विश्लेषण करा",
+            symptom_disclaimer: "ही सुविधा केवळ जागरूकता-आधारित सूचना प्रदान करते आणि एक निदानात्मक साधन नाही.",
+            // Disease Info
+            disease_info_title: "रोग जागरूकता",
+            disease_info_desc: "सामान्य आजार, त्यांची लक्षणे, कारणे आणि प्रतिबंधक धोरणे जाणून घ्या.",
+            dengue_title: "डेंगू",
+            dengue_subtitle: "मच्छर-जनित विषाणूजन्य संसर्ग",
+            dengue_symptoms: "उच्च ताप, गंभीर डोकेदुखी, डोळ्यांच्या मागे दुखी, सांधे आणि स्नायू दुखी, मळमळ, त्वचेवर पुरळ.",
+            dengue_causes: "संक्रमित एडीज मच्छरांच्या चावण्याद्वारे पसरते.",
+            dengue_prevention: "मच्छरांच्या चावण्यापासून दूर रहा, उभे पाणी काढून टाका, मच्छरदाण्या आणि प्रतिबंधक वापरा.",
+            malaria_title: "मलेरिया",
+            malaria_subtitle: "परजीवी मच्छर-जनित रोग",
+            malaria_symptoms: "थंडी सह ताप, घाम, डोकेदुखी, मळमळ, उलट्या, थकवा.",
+            malaria_causes: "प्लाज्मोडियम परजीव्याद्वारे एंफेलीज मच्छरांच्या माध्यमातून पसरते.",
+            malaria_prevention: "मच्छरदाण्या, प्रतिबंधक, घरात फवारणी वापरा आणि स्थानिक आरोग्य मार्गदर्शनाचे पालन करा.",
+            covid_title: "कोविड-19",
+            covid_subtitle: "श्वसन विषाणूजन्य संसर्ग",
+            covid_symptoms: "ताप, कोरडा खोकला, थकवा, चव किंवा वास हरवणे, घशात खरखर, श्वास घेण्यात अडचण.",
+            covid_causes: "SARS-CoV-2 विषाणूद्वारे, श्वसन बिंदू आणि एरोसोलद्वारे पसरते.",
+            covid_prevention: "लसीकरण, गर्दीच्या ठिकाणी मास्क, हात स्वच्छता, चांगली व्हेंटिलेशन, शारीरिक अंतर.",
+            diabetes_title: "मधुमेह",
+            diabetes_subtitle: "कालव्यापी चयापचय विकार",
+            diabetes_symptoms: "तहान वाढणे, वारंवार लघवी, थकवा, धुंद दृष्टी, हळूहळू बरे होणारे व्रण.",
+            diabetes_causes: "अपर्याप्त इन्सुलिन उत्पादन किंवा अप्रभावी इन्सुलिन वापर; वंशपरंपरा आणि जीवनशैलीने प्रभावित.",
+            diabetes_prevention: "निरोगी आहार, नियमित व्यायाम, वजन व्यवस्थापन, नियमित आरोग्य तपासणी.",
+            influenza_title: "इन्फ्लुएंझा (फ्लू)",
+            influenza_subtitle: "हंगामी विषाणूजन्य संसर्ग",
+            influenza_symptoms: "अचानक ताप, थंडी, खोकला, घशात खरखर, स्नायू दुखी, थकवा.",
+            influenza_causes: "इन्फ्लुएंझा विषाणूंशी संसर्ग, लोक खोकतात किंवा शिंकतात तेव्हा बिंदूद्वारे पसरते.",
+            influenza_prevention: "वार्षिक फ्लू लसीकरण, हात स्वच्छता, खोकला आणि शिंकणे झाकणे, आजारी असताना घरी राहणे.",
+            // Prevention Tips
+            prevention_title: "प्रतिबंध टिप्स",
+            prevention_desc: "लहान दैनंदिन क्रिया तुमच्या आरोग्य आणि समुदायाच्या संरक्षणात मोठा फरक करू शकतात.",
+            hand_hygiene_title: "हात स्वच्छता",
+            hand_hygiene_desc: "जेवण करण्यापूर्वी आणि सार्वजनिक पृष्ठभागांशी संपर्क साधल्यानंतर विशेषतः साबण आणि पाण्याने किमान 20 सेकंद हात धुवा.",
+            vaccination_title: "लसीकरण जागरूकता",
+            vaccination_desc: "तुमच्या वय आणि प्रदेशासाठी शिफारस केलेल्या लसींबद्दल माहिती ठेवा आणि तुमच्या स्थानिक आरोग्य अधिकाऱ्याच्या मार्गदर्शक तत्त्वांचे पालन करा.",
+            mosquito_title: "मच्छर संरक्षण",
+            mosquito_desc: "तुमच्या घराभोवती उभे पाणी काढून टाका, जाळ्या आणि प्रतिबंधक वापरा आणि मच्छर-प्रवण भागात लांब बाहीचे कपडे घाला.",
+            lifestyle_title: "निरोगी जीवनशैली",
+            lifestyle_desc: "संतुलित आहार घ्या, नियमित व्यायाम करा, चांगली झोप घ्या आणि तुमची रोगप्रतिकारक शक्ती मजबूत करण्यासाठी तणाव व्यवस्थापित करा.",
+            // Health Alerts
+            alerts_title: "स्थान-आधारित आरोग्य अलर्ट",
+            alerts_desc: "तुमच्या प्रदेशासाठी प्लेसहोल्डर आरोग्य अलर्ट तपासा. भविष्यात हे बॅकएंडमधून लाइव्ह डेटाशी कनेक्ट होईल.",
+            alerts_check_title: "माझ्या जवळील आरोग्य अलर्ट तपासा",
+            alerts_check_desc: "आम्ही प्रदेश-विशिष्ट सार्वजनिक आरोग्य जागरूकता अलर्ट दाखवण्यासाठी तुमचे अंदाजे स्थान वापरतो.",
+            check_alerts_btn: "माझ्या जवळील अलर्ट तपासा",
+            // FAQ
+            faq_title: "सामान्य प्रश्न",
+            faq_desc: "सामान्य आरोग्य जागरूकता प्रश्नांची जलद उत्तरे.",
+            faq_q1: "मला ताप आला तर मी काय करावे?",
+            faq_a1: "तुम्हाला ताप आला तर तुमचा तापमान मॉनिटर करा, हायड्रेटेड राहा, आराम करा आणि अँटीबायोटिक्ससह स्वयं-औषध टाळा. ताप कायम राहिल्यास, खूप उच्च झाल्यास किंवा श्वास घेण्यात अडचण, छाती दुखी, गंभीर डोकेदुखी, पुरळ किंवा गोंधळ यांसारख्या चेतावणी चिन्हांसह झाल्यास वैद्यकीय सल्ला घ्या.",
+            faq_q2: "डेंगू कसा पसरतो?",
+            faq_a2: "डेंगू संक्रमित एडीज मच्छरांच्या चावण्याद्वारे पसरतो, जे सहसा दिवसभर चावतात. विषाणू व्यक्तीला व्यक्तीला थेट पसरत नाही. मच्छर पालन रोखणे आणि मच्छरांच्या चावण्यापासून दूर राहणे हे डेंगू प्रसार कमी करण्याच्या प्रमुख धोरण आहेत.",
+            faq_q3: "मला कधी डॉक्टरांचा सल्ला घ्यायला हवा?",
+            faq_a3: "तुमची लक्षणे गंभीर, सतत किंवा वाढत असल्यास; तुम्हाला श्वास घेण्यात अडचण, छाती दुखी, गोंधळ किंवा सतत उच्च ताप असल्यास; किंवा तुम्ही उच्च जोखिम गटाशी संबंधित असल्यास जसे लहान मुले, वृद्ध किंवा कालव्यापी आरोग्य स्थिती असलेले लोक तर तुम्ही डॉक्टरांचा सल्ला घ्या.",
+            // Footer
+            footer_about: "शैक्षणिक उद्देशांसाठी एक AI-चालित सार्वजनिक आरोग्य जागरूकता चॅटबॉट, ज्याला Java Full Stack मिनी प्रोजेक्ट म्हणून विकसित केले आहे.",
+            footer_frontend: "फ्रंटएंड: HTML5, CSS3, JavaScript, Bootstrap 5",
+            footer_backend: "बॅकएंड (योजनाबद्ध): Java Spring Boot REST APIs",
+            footer_team_title: "प्रोजेक्ट टीम",
+            footer_team_member1: "टीम सदस्य 1 (डेवलपर)",
+            footer_team_member2: "टीम सदस्य 2 (डेवलपर)",
+            footer_team_member3: "टीम सदस्य 3 (चाचणी आणि दस्तऐवजीकरण)",
+            footer_disclaimer_title: "अस्वीकरण",
+            footer_disclaimer1: "हा चॅटबॉट शैक्षणिक आरोग्य जागरूकता माहिती प्रदान करतो आणि व्यावसायिक वैद्यकीय सल्ला, निदान किंवा उपचाराचा पर्याय असू नये.",
+            footer_disclaimer2: "कोणत्याही गंभीर किंवा आणीबाणीच्या लक्षणांसाठी, कृपया त्वरित योग्य आरोग्य व्यावसायिकांचा सल्ला घ्या.",
+            footer_copyright: "© [YEAR] HealthGuard AI. सर्व हक्क राखीव.",
+            footer_project: "कॉलेज मिनी प्रोजेक्ट • Java Full Stack"
         }
     };
 
@@ -285,9 +534,16 @@ function initChatApp() {
         historyList.innerHTML = "";
         const sorted = [...state.conversations].sort((a, b) => (new Date(b.updatedAt)).getTime() - (new Date(a.updatedAt)).getTime());
         sorted.forEach(c => {
+            const container = document.createElement("div");
+            container.className = "chat-history-item-wrapper";
+            container.style.display = "flex";
+            container.style.alignItems = "center";
+            container.style.gap = "0.5rem";
+            
             const btn = document.createElement("button");
             btn.type = "button";
             btn.className = "chat-history-item " + (c.id === state.activeId ? "active" : "");
+            btn.style.flex = "1";
             btn.innerHTML = `
                 <div class="chat-history-title">${escapeHtml(c.title || defaultConversationTitle(chatConfig.language))}</div>
                 <div class="chat-history-meta">${formatDateShort(c.updatedAt)}</div>
@@ -297,8 +553,46 @@ function initChatApp() {
                 saveChats(state);
                 renderAll();
             });
-            historyList.appendChild(btn);
+            container.appendChild(btn);
+            
+            const deleteBtn = document.createElement("button");
+            deleteBtn.type = "button";
+            deleteBtn.className = "btn btn-sm btn-outline-danger";
+            deleteBtn.style.padding = "0.35rem 0.5rem";
+            deleteBtn.title = "Delete this conversation";
+            deleteBtn.innerHTML = '<i class="fa-solid fa-trash-can"></i>';
+            deleteBtn.addEventListener("click", (e) => {
+                e.stopPropagation();
+                deleteConversation(c.id);
+            });
+            container.appendChild(deleteBtn);
+            
+            historyList.appendChild(container);
         });
+    }
+
+    function deleteConversation(id) {
+        state.conversations = state.conversations.filter(c => c.id !== id);
+        if (state.activeId === id) {
+            state.activeId = state.conversations.length > 0 ? state.conversations[0].id : null;
+            if (!state.activeId && state.conversations.length === 0) {
+                const now = new Date().toISOString();
+                const newConvo = {
+                    id: cryptoRandomId(),
+                    title: "",
+                    updatedAt: now,
+                    messages: seedWelcomeMessages(chatConfig.language).map(m => ({
+                        sender: m.sender,
+                        text: m.text,
+                        timestamp: now
+                    }))
+                };
+                state.conversations.push(newConvo);
+                state.activeId = newConvo.id;
+            }
+        }
+        saveChats(state);
+        renderAll();
     }
 
     function renderConversation() {
@@ -317,7 +611,7 @@ function initChatApp() {
             `;
             chatWindow.appendChild(msgEl);
         });
-        chatWindow.scrollTop = chatWindow.scrollHeight;
+        // Let messages flow naturally - no auto-scroll
     }
 
     function pushMessage(sender, text) {
@@ -331,6 +625,7 @@ function initChatApp() {
         }
         saveChats(state);
         renderAll();
+        // Let new messages appear naturally at bottom - no auto-scroll
     }
 
     function newChat() {
@@ -607,7 +902,7 @@ function initChatbot() {
                 `;
                 win.appendChild(msgEl);
             });
-            win.scrollTop = win.scrollHeight;
+            // Let messages flow naturally - no auto-scroll
         });
     }
 
@@ -801,6 +1096,48 @@ function initChatbot() {
     }
 
 
+// ---------------------------------------------------
+// ChatGPT / API integration
+// ---------------------------------------------------
+// place your OpenAI API key here or save to localStorage under "healthguard_openai_key"
+const OPENAI_API_KEY = "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";
+
+async function getChatbotReply(userText, lang) {
+    const key = OPENAI_API_KEY || window.localStorage.getItem("healthguard_openai_key");
+    if (key) {
+        try {
+            const payload = {
+                model: "gpt-3.5-turbo",
+                messages: [
+                    { role: "system", content: `You are a helpful public health awareness assistant. Answer questions in ${lang === "hi" ? "Hindi" : lang === "mr" ? "Marathi" : "English"}.` },
+                    { role: "user", content: userText }
+                ],
+                max_tokens: 500,
+                temperature: 0.7
+            };
+            const res = await fetch("https://api.openai.com/v1/chat/completions", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${key}`
+                },
+                body: JSON.stringify(payload)
+            });
+            const data = await res.json();
+            if (data.choices && data.choices[0] && data.choices[0].message) {
+                return data.choices[0].message.content.trim();
+            }
+            console.error("Unexpected OpenAI response", data);
+            return "Sorry, I couldn't generate a response from the AI service.";
+        } catch (err) {
+            console.error("ChatGPT request failed", err);
+            return "Error contacting AI service.";
+        }
+    }
+    // fallback to built-in mock replies
+    return getMockChatbotReply(userText, lang);
+}
+
 function getMockChatbotReply(userText, lang) {
     const text = userText.toLowerCase();
 
@@ -904,11 +1241,73 @@ function initSymptomChecker() {
 }
 
 function getMockSymptomAnalysis(symptoms) {
-    // Very simple heuristic mapping for demo purposes only
+    // Enhanced heuristic mapping for demo purposes
     const diseases = [];
 
     const has = (s) => symptoms.includes(s);
 
+    // Provide a dedicated entry for each individual symptom
+    if (has("fever")) {
+        diseases.push({
+            name: "Fever (awareness)",
+            likelihood: "Common symptom",
+            description: "Fever may be caused by infections, inflammation, or other medical conditions. It signals that the body is fighting something.",
+            advice: "Stay hydrated, rest, and seek medical advice if temperature exceeds 39°C (102°F) or persists beyond a couple of days.",
+            tag: "General symptom"
+        });
+    }
+
+    if (has("headache")) {
+        diseases.push({
+            name: "Headache (awareness)",
+            likelihood: "Common symptom",
+            description: "Headaches can result from stress, dehydration, sinus issues, or more serious conditions.",
+            advice: "Rest in a quiet, dark room, stay hydrated, and consult a healthcare professional if the headache is sudden, severe, or accompanied by other warning signs.",
+            tag: "General symptom"
+        });
+    }
+
+    if (has("cough")) {
+        diseases.push({
+            name: "Cough (awareness)",
+            likelihood: "Common symptom",
+            description: "A cough can be triggered by viral or bacterial infections, allergies, or irritants in the air. It helps clear the airway.",
+            advice: "Monitor for changes in color or duration, use soothing fluids, and see a doctor if it persists beyond a week or is accompanied by difficulty breathing.",
+            tag: "Respiratory symptom"
+        });
+    }
+
+    if (has("fatigue")) {
+        diseases.push({
+            name: "Fatigue (awareness)",
+            likelihood: "Non-specific",
+            description: "Fatigue may stem from lack of sleep, stress, nutritional deficiencies, or underlying illnesses such as viral infections or anemia.",
+            advice: "Ensure adequate rest, balanced nutrition, and consult a healthcare provider if fatigue is unexplained or interferes with daily life.",
+            tag: "General symptom"
+        });
+    }
+
+    if (has("nausea")) {
+        diseases.push({
+            name: "Nausea (awareness)",
+            likelihood: "Non-specific",
+            description: "Nausea can be caused by gastrointestinal upset, motion sickness, infections, or medication side effects.",
+            advice: "Eat bland foods, stay hydrated, and seek medical attention if nausea is severe, persistent, or accompanied by vomiting.",
+            tag: "General symptom"
+        });
+    }
+
+    if (has("body pain")) {
+        diseases.push({
+            name: "Body pain (awareness)",
+            likelihood: "Non-specific",
+            description: "Body aches may occur with viral illnesses like flu, overexertion, or inflammatory conditions.",
+            advice: "Rest, use over-the-counter pain relievers if appropriate, and consult a doctor if pain is intense or localized.",
+            tag: "General symptom"
+        });
+    }
+
+    // Specific combinations still produce targeted suggestions
     if (has("fever") && has("headache") && has("body pain")) {
         diseases.push({
             name: "Dengue (awareness)",
@@ -929,16 +1328,7 @@ function getMockSymptomAnalysis(symptoms) {
         });
     }
 
-    if (has("nausea")) {
-        diseases.push({
-            name: "Gastrointestinal upset (awareness)",
-            likelihood: "Non‑specific",
-            description: "Nausea alone is non‑specific and can occur in many conditions like infections, food intolerance, or medication side‑effects.",
-            advice: "If nausea persists, is severe, or is associated with severe abdominal pain or vomiting, contact a healthcare provider.",
-            tag: "General symptoms"
-        });
-    }
-
+    // Fallback if nothing matched (should not occur now)
     if (diseases.length === 0) {
         diseases.push({
             name: "Non‑specific symptom pattern",

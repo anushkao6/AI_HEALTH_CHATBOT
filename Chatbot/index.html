@@ -211,8 +211,8 @@
         <section id="symptom-checker" class="section-padding">
             <div class="container">
                 <div class="section-header text-center mb-5" data-sr>
-                    <h2 class="fw-bold">Smart Symptom Checker</h2>
-                    <p class="text-muted mb-0">
+                    <h2 class="fw-bold" data-i18n="symptom_checker_title">Smart Symptom Checker</h2>
+                    <p class="text-muted mb-0" data-i18n="symptom_checker_desc">
                         Select your symptoms to get educational insights on possible conditions.
                     </p>
                 </div>
@@ -222,32 +222,32 @@
                         <div class="card border-0 shadow-sm">
                             <div class="card-body">
                                 <div class="mb-3">
-                                    <span class="fw-semibold">Select your symptoms:</span>
+                                    <span class="fw-semibold" data-i18n="select_symptoms">Select your symptoms:</span>
                                 </div>
                                 <div id="symptomTags" class="symptom-tags mb-4">
                                     <button class="btn btn-outline-primary symptom-tag" data-symptom="fever">
-                                        <i class="fa-solid fa-temperature-high me-1"></i> Fever
+                                        <i class="fa-solid fa-temperature-high me-1"></i> <span data-i18n="fever">Fever</span>
                                     </button>
                                     <button class="btn btn-outline-primary symptom-tag" data-symptom="headache">
-                                        <i class="fa-solid fa-brain me-1"></i> Headache
+                                        <i class="fa-solid fa-brain me-1"></i> <span data-i18n="headache">Headache</span>
                                     </button>
                                     <button class="btn btn-outline-primary symptom-tag" data-symptom="cough">
-                                        <i class="fa-solid fa-head-side-cough me-1"></i> Cough
+                                        <i class="fa-solid fa-head-side-cough me-1"></i> <span data-i18n="cough">Cough</span>
                                     </button>
                                     <button class="btn btn-outline-primary symptom-tag" data-symptom="fatigue">
-                                        <i class="fa-solid fa-bed-pulse me-1"></i> Fatigue
+                                        <i class="fa-solid fa-bed-pulse me-1"></i> <span data-i18n="fatigue">Fatigue</span>
                                     </button>
                                     <button class="btn btn-outline-primary symptom-tag" data-symptom="nausea">
-                                        <i class="fa-solid fa-face-tired me-1"></i> Nausea
+                                        <i class="fa-solid fa-face-tired me-1"></i> <span data-i18n="nausea">Nausea</span>
                                     </button>
                                     <button class="btn btn-outline-primary symptom-tag" data-symptom="body pain">
-                                        <i class="fa-solid fa-person-running me-1"></i> Body Pain
+                                        <i class="fa-solid fa-person-running me-1"></i> <span data-i18n="body_pain">Body Pain</span>
                                     </button>
                                 </div>
                                 <button id="analyzeSymptomsBtn" class="btn btn-primary rounded-pill">
-                                    <i class="fa-solid fa-microscope me-1"></i> Analyze Symptoms
+                                    <i class="fa-solid fa-microscope me-1"></i> <span data-i18n="analyze_symptoms">Analyze Symptoms</span>
                                 </button>
-                                <small class="d-block text-muted mt-2">
+                                <small class="d-block text-muted mt-2" data-i18n="symptom_disclaimer">
                                     This feature provides awareness-based suggestions only and is not a diagnostic tool.
                                 </small>
                             </div>
@@ -264,8 +264,8 @@
         <section id="disease-info" class="section-padding bg-soft">
             <div class="container">
                 <div class="section-header text-center mb-5" data-sr>
-                    <h2 class="fw-bold">Disease Awareness</h2>
-                    <p class="text-muted mb-0">
+                    <h2 class="fw-bold" data-i18n="disease_info_title">Disease Awareness</h2>
+                    <p class="text-muted mb-0" data-i18n="disease_info_desc">
                         Learn about common diseases, their symptoms, causes, and prevention strategies.
                     </p>
                 </div>
@@ -280,13 +280,13 @@
                                         <i class="fa-solid fa-bug"></i>
                                     </div>
                                     <div>
-                                        <h5 class="card-title mb-0">Dengue</h5>
-                                        <small class="text-muted">Mosquito-borne viral infection</small>
+                                        <h5 class="card-title mb-0" data-i18n="dengue_title">Dengue</h5>
+                                        <small class="text-muted" data-i18n="dengue_subtitle">Mosquito-borne viral infection</small>
                                     </div>
                                 </div>
-                                <p class="small mb-2"><strong>Symptoms:</strong> High fever, severe headache, pain behind the eyes, joint and muscle pain, nausea, skin rash.</p>
-                                <p class="small mb-2"><strong>Causes:</strong> Spread through the bite of infected Aedes mosquitoes.</p>
-                                <p class="small mb-0"><strong>Prevention:</strong> Avoid mosquito bites, remove stagnant water, use mosquito nets and repellents.</p>
+                                <p class="small mb-2"><strong data-i18n="symptoms_label">Symptoms:</strong> <span data-i18n="dengue_symptoms">High fever, severe headache, pain behind the eyes, joint and muscle pain, nausea, skin rash.</span></p>
+                                <p class="small mb-2"><strong data-i18n="causes_label">Causes:</strong> <span data-i18n="dengue_causes">Spread through the bite of infected Aedes mosquitoes.</span></p>
+                                <p class="small mb-0"><strong data-i18n="prevention_label">Prevention:</strong> <span data-i18n="dengue_prevention">Avoid mosquito bites, remove stagnant water, use mosquito nets and repellents.</span></p>
                             </div>
                         </div>
                     </div>
@@ -300,13 +300,13 @@
                                         <i class="fa-solid fa-mosquito"></i>
                                     </div>
                                     <div>
-                                        <h5 class="card-title mb-0">Malaria</h5>
-                                        <small class="text-muted">Parasitic mosquito-borne disease</small>
+                                        <h5 class="card-title mb-0" data-i18n="malaria_title">Malaria</h5>
+                                        <small class="text-muted" data-i18n="malaria_subtitle">Parasitic mosquito-borne disease</small>
                                     </div>
                                 </div>
-                                <p class="small mb-2"><strong>Symptoms:</strong> Fever with chills, sweating, headache, nausea, vomiting, fatigue.</p>
-                                <p class="small mb-2"><strong>Causes:</strong> Caused by Plasmodium parasites transmitted through Anopheles mosquitoes.</p>
-                                <p class="small mb-0"><strong>Prevention:</strong> Use mosquito nets, repellents, indoor spraying, and follow local health guidance.</p>
+                                <p class="small mb-2"><strong data-i18n="symptoms_label">Symptoms:</strong> <span data-i18n="malaria_symptoms">Fever with chills, sweating, headache, nausea, vomiting, fatigue.</span></p>
+                                <p class="small mb-2"><strong data-i18n="causes_label">Causes:</strong> <span data-i18n="malaria_causes">Caused by Plasmodium parasites transmitted through Anopheles mosquitoes.</span></p>
+                                <p class="small mb-0"><strong data-i18n="prevention_label">Prevention:</strong> <span data-i18n="malaria_prevention">Use mosquito nets, repellents, indoor spraying, and follow local health guidance.</span></p>
                             </div>
                         </div>
                     </div>
@@ -320,13 +320,13 @@
                                         <i class="fa-solid fa-virus-covid"></i>
                                     </div>
                                     <div>
-                                        <h5 class="card-title mb-0">COVID-19</h5>
-                                        <small class="text-muted">Respiratory viral infection</small>
+                                        <h5 class="card-title mb-0" data-i18n="covid_title">COVID-19</h5>
+                                        <small class="text-muted" data-i18n="covid_subtitle">Respiratory viral infection</small>
                                     </div>
                                 </div>
-                                <p class="small mb-2"><strong>Symptoms:</strong> Fever, dry cough, tiredness, loss of taste or smell, sore throat, difficulty breathing.</p>
-                                <p class="small mb-2"><strong>Causes:</strong> Caused by SARS-CoV-2 virus, spread via respiratory droplets and aerosols.</p>
-                                <p class="small mb-0"><strong>Prevention:</strong> Vaccination, masks in crowded places, hand hygiene, good ventilation, physical distancing.</p>
+                                <p class="small mb-2"><strong data-i18n="symptoms_label">Symptoms:</strong> <span data-i18n="covid_symptoms">Fever, dry cough, tiredness, loss of taste or smell, sore throat, difficulty breathing.</span></p>
+                                <p class="small mb-2"><strong data-i18n="causes_label">Causes:</strong> <span data-i18n="covid_causes">Caused by SARS-CoV-2 virus, spread via respiratory droplets and aerosols.</span></p>
+                                <p class="small mb-0"><strong data-i18n="prevention_label">Prevention:</strong> <span data-i18n="covid_prevention">Vaccination, masks in crowded places, hand hygiene, good ventilation, physical distancing.</span></p>
                             </div>
                         </div>
                     </div>
@@ -340,13 +340,13 @@
                                         <i class="fa-solid fa-syringe"></i>
                                     </div>
                                     <div>
-                                        <h5 class="card-title mb-0">Diabetes</h5>
-                                        <small class="text-muted">Chronic metabolic disorder</small>
+                                        <h5 class="card-title mb-0" data-i18n="diabetes_title">Diabetes</h5>
+                                        <small class="text-muted" data-i18n="diabetes_subtitle">Chronic metabolic disorder</small>
                                     </div>
                                 </div>
-                                <p class="small mb-2"><strong>Symptoms:</strong> Increased thirst, frequent urination, fatigue, blurred vision, slow-healing sores.</p>
-                                <p class="small mb-2"><strong>Causes:</strong> Insufficient insulin production or ineffective insulin use; influenced by genetics and lifestyle.</p>
-                                <p class="small mb-0"><strong>Prevention:</strong> Healthy diet, regular exercise, weight management, routine health check-ups.</p>
+                                <p class="small mb-2"><strong data-i18n="symptoms_label">Symptoms:</strong> <span data-i18n="diabetes_symptoms">Increased thirst, frequent urination, fatigue, blurred vision, slow-healing sores.</span></p>
+                                <p class="small mb-2"><strong data-i18n="causes_label">Causes:</strong> <span data-i18n="diabetes_causes">Insufficient insulin production or ineffective insulin use; influenced by genetics and lifestyle.</span></p>
+                                <p class="small mb-0"><strong data-i18n="prevention_label">Prevention:</strong> <span data-i18n="diabetes_prevention">Healthy diet, regular exercise, weight management, routine health check-ups.</span></p>
                             </div>
                         </div>
                     </div>
@@ -360,13 +360,13 @@
                                         <i class="fa-solid fa-lungs-virus"></i>
                                     </div>
                                     <div>
-                                        <h5 class="card-title mb-0">Influenza (Flu)</h5>
-                                        <small class="text-muted">Seasonal viral infection</small>
+                                        <h5 class="card-title mb-0" data-i18n="influenza_title">Influenza (Flu)</h5>
+                                        <small class="text-muted" data-i18n="influenza_subtitle">Seasonal viral infection</small>
                                     </div>
                                 </div>
-                                <p class="small mb-2"><strong>Symptoms:</strong> Sudden fever, chills, cough, sore throat, muscle aches, fatigue.</p>
-                                <p class="small mb-2"><strong>Causes:</strong> Infection with influenza viruses, spread through droplets when people cough or sneeze.</p>
-                                <p class="small mb-0"><strong>Prevention:</strong> Annual flu vaccination, hand hygiene, covering coughs and sneezes, staying home when sick.</p>
+                                <p class="small mb-2"><strong data-i18n="symptoms_label">Symptoms:</strong> <span data-i18n="influenza_symptoms">Sudden fever, chills, cough, sore throat, muscle aches, fatigue.</span></p>
+                                <p class="small mb-2"><strong data-i18n="causes_label">Causes:</strong> <span data-i18n="influenza_causes">Infection with influenza viruses, spread through droplets when people cough or sneeze.</span></p>
+                                <p class="small mb-0"><strong data-i18n="prevention_label">Prevention:</strong> <span data-i18n="influenza_prevention">Annual flu vaccination, hand hygiene, covering coughs and sneezes, staying home when sick.</span></p>
                             </div>
                         </div>
                     </div>
@@ -378,8 +378,8 @@
         <section id="prevention" class="section-padding">
             <div class="container">
                 <div class="section-header text-center mb-5" data-sr>
-                    <h2 class="fw-bold">Prevention Tips</h2>
-                    <p class="text-muted mb-0">
+                    <h2 class="fw-bold" data-i18n="prevention_title">Prevention Tips</h2>
+                    <p class="text-muted mb-0" data-i18n="prevention_desc">
                         Small daily actions can make a big difference in protecting your health and community.
                     </p>
                 </div>
@@ -392,8 +392,8 @@
                                 <div class="icon-circle bg-info-subtle text-info mb-3">
                                     <i class="fa-solid fa-hands-bubbles"></i>
                                 </div>
-                                <h5 class="card-title">Hand Hygiene</h5>
-                                <p class="small text-muted mb-0">
+                                <h5 class="card-title" data-i18n="hand_hygiene_title">Hand Hygiene</h5>
+                                <p class="small text-muted mb-0" data-i18n="hand_hygiene_desc">
                                     Wash hands regularly with soap and water for at least 20 seconds, especially before eating and after contact with public surfaces.
                                 </p>
                             </div>
@@ -407,8 +407,8 @@
                                 <div class="icon-circle bg-success-subtle text-success mb-3">
                                     <i class="fa-solid fa-syringe"></i>
                                 </div>
-                                <h5 class="card-title">Vaccination Awareness</h5>
-                                <p class="small text-muted mb-0">
+                                <h5 class="card-title" data-i18n="vaccination_title">Vaccination Awareness</h5>
+                                <p class="small text-muted mb-0" data-i18n="vaccination_desc">
                                     Stay informed about recommended vaccines for your age and region, and follow your local health authority's guidelines.
                                 </p>
                             </div>
@@ -422,8 +422,8 @@
                                 <div class="icon-circle bg-warning-subtle text-warning mb-3">
                                     <i class="fa-solid fa-mosquito"></i>
                                 </div>
-                                <h5 class="card-title">Mosquito Protection</h5>
-                                <p class="small text-muted mb-0">
+                                <h5 class="card-title" data-i18n="mosquito_title">Mosquito Protection</h5>
+                                <p class="small text-muted mb-0" data-i18n="mosquito_desc">
                                     Remove stagnant water around your home, use nets and repellents, and wear long-sleeved clothing in mosquito-prone areas.
                                 </p>
                             </div>
@@ -437,8 +437,8 @@
                                 <div class="icon-circle bg-primary-subtle text-primary mb-3">
                                     <i class="fa-solid fa-heart-pulse"></i>
                                 </div>
-                                <h5 class="card-title">Healthy Lifestyle</h5>
-                                <p class="small text-muted mb-0">
+                                <h5 class="card-title" data-i18n="lifestyle_title">Healthy Lifestyle</h5>
+                                <p class="small text-muted mb-0" data-i18n="lifestyle_desc">
                                     Eat a balanced diet, exercise regularly, sleep well, and manage stress to strengthen your immune system.
                                 </p>
                             </div>
@@ -452,8 +452,8 @@
         <section id="health-alerts" class="section-padding bg-soft">
             <div class="container">
                 <div class="section-header text-center mb-4" data-sr>
-                    <h2 class="fw-bold">Location-Based Health Alerts</h2>
-                    <p class="text-muted mb-0">
+                    <h2 class="fw-bold" data-i18n="alerts_title">Location-Based Health Alerts</h2>
+                    <p class="text-muted mb-0" data-i18n="alerts_desc">
                         Check placeholder health alerts for your area. This will connect to live data from the backend in the future.
                     </p>
                 </div>
@@ -463,14 +463,14 @@
                         <div class="card border-0 shadow-sm">
                             <div class="card-body d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3">
                                 <div>
-                                    <h5 class="card-title mb-2"><i class="fa-solid fa-location-dot text-primary me-2"></i>Check Health Alerts Near Me</h5>
-                                    <p class="small text-muted mb-0">
+                                    <h5 class="card-title mb-2" data-i18n="alerts_check_title"><i class="fa-solid fa-location-dot text-primary me-2"></i>Check Health Alerts Near Me</h5>
+                                    <p class="small text-muted mb-0" data-i18n="alerts_check_desc">
                                         We use your approximate location to show region-specific public health awareness alerts.
                                     </p>
                                 </div>
                                 <div class="text-md-end">
                                     <button id="checkAlertsBtn" class="btn btn-primary rounded-pill">
-                                        <span id="alertsBtnText"><i class="fa-solid fa-location-crosshairs me-1"></i> Check Alerts Near Me</span>
+                                        <span id="alertsBtnText" data-i18n="check_alerts_btn"><i class="fa-solid fa-location-crosshairs me-1"></i> Check Alerts Near Me</span>
                                         <span id="alertsLoadingSpinner" class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
                                     </button>
                                 </div>
@@ -488,8 +488,8 @@
         <section id="faq" class="section-padding">
             <div class="container">
                 <div class="section-header text-center mb-5" data-sr>
-                    <h2 class="fw-bold">Frequently Asked Questions</h2>
-                    <p class="text-muted mb-0">
+                    <h2 class="fw-bold" data-i18n="faq_title">Frequently Asked Questions</h2>
+                    <p class="text-muted mb-0" data-i18n="faq_desc">
                         Quick answers to common health awareness questions.
                     </p>
                 </div>
@@ -500,12 +500,12 @@
                             <!-- Q1 -->
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="headingOne">
-                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" data-i18n="faq_q1">
                                         What should I do if I have fever?
                                     </button>
                                 </h2>
                                 <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
-                                    <div class="accordion-body">
+                                    <div class="accordion-body" data-i18n="faq_a1">
                                         If you develop a fever, monitor your temperature, stay hydrated, rest, and avoid self-medication with antibiotics. Seek medical advice if the fever persists, becomes very high, or is accompanied by warning signs such as difficulty breathing, chest pain, severe headache, rash, or confusion.
                                     </div>
                                 </div>
@@ -514,12 +514,12 @@
                             <!-- Q2 -->
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="headingTwo">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" data-i18n="faq_q2">
                                         How does dengue spread?
                                     </button>
                                 </h2>
                                 <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
-                                    <div class="accordion-body">
+                                    <div class="accordion-body" data-i18n="faq_a2">
                                         Dengue spreads through the bite of infected Aedes mosquitoes, which usually bite during the day. The virus is not spread directly from person to person. Preventing mosquito breeding and avoiding mosquito bites are key strategies to reduce dengue transmission.
                                     </div>
                                 </div>
@@ -528,12 +528,12 @@
                             <!-- Q3 -->
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="headingThree">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" data-i18n="faq_q3">
                                         When should I consult a doctor?
                                     </button>
                                 </h2>
                                 <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
-                                    <div class="accordion-body">
+                                    <div class="accordion-body" data-i18n="faq_a3">
                                         You should consult a doctor if your symptoms are severe, persistent, or worsening; if you have difficulty breathing, chest pain, confusion, or persistent high fever; or if you belong to a higher-risk group such as young children, older adults, or people with chronic health conditions.
                                     </div>
                                 </div>
@@ -551,38 +551,38 @@
             <div class="row gy-4">
                 <div class="col-md-5">
                     <h5 class="mb-3">HealthGuard AI</h5>
-                    <p class="small text-muted mb-3">
+                    <p class="small text-muted mb-3" data-i18n="footer_about">
                         An AI-driven public health awareness chatbot for educational purposes, developed as a Java Full Stack mini project.
                     </p>
-                    <p class="small text-muted mb-1">
+                    <p class="small text-muted mb-1" data-i18n="footer_frontend">
                         <i class="fa-solid fa-code me-1"></i> Frontend: HTML5, CSS3, JavaScript, Bootstrap 5
                     </p>
-                    <p class="small text-muted mb-0">
+                    <p class="small text-muted mb-0" data-i18n="footer_backend">
                         <i class="fa-solid fa-server me-1"></i> Backend (planned): Java Spring Boot REST APIs
                     </p>
                 </div>
                 <div class="col-md-4">
-                    <h6 class="mb-3">Project Team</h6>
+                    <h6 class="mb-3" data-i18n="footer_team_title">Project Team</h6>
                     <ul class="list-unstyled small text-muted mb-0">
-                        <li>• Team Member 1 (Developer)</li>
-                        <li>• Team Member 2 (Developer)</li>
-                        <li>• Team Member 3 (Testing & Documentation)</li>
+                        <li data-i18n="footer_team_member1">• Team Member 1 (Developer)</li>
+                        <li data-i18n="footer_team_member2">• Team Member 2 (Developer)</li>
+                        <li data-i18n="footer_team_member3">• Team Member 3 (Testing & Documentation)</li>
                     </ul>
                 </div>
                 <div class="col-md-3">
-                    <h6 class="mb-3">Disclaimer</h6>
-                    <p class="small text-muted mb-2">
+                    <h6 class="mb-3" data-i18n="footer_disclaimer_title">Disclaimer</h6>
+                    <p class="small text-muted mb-2" data-i18n="footer_disclaimer1">
                         This chatbot provides educational health awareness information and should not replace professional medical advice, diagnosis, or treatment.
                     </p>
-                    <p class="small text-muted mb-0">
+                    <p class="small text-muted mb-0" data-i18n="footer_disclaimer2">
                         For any serious or emergency symptoms, please consult a qualified healthcare professional immediately.
                     </p>
                 </div>
             </div>
             <hr class="border-secondary my-4">
             <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-2 small text-muted">
-                <span>© <span id="currentYear"></span> HealthGuard AI. All rights reserved.</span>
-                <span>College Mini Project • Java Full Stack</span>
+                <span data-i18n="footer_copyright">© <span id="currentYear"></span> HealthGuard AI. All rights reserved.</span>
+                <span data-i18n="footer_project">College Mini Project • Java Full Stack</span>
             </div>
         </div>
     </footer>
